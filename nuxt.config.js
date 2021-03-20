@@ -15,8 +15,18 @@ export default {
     ]
   },
 
+  server: {
+    host: '0.0.0.0'
+  },
+
+  alias: {
+    '~': '',
+    '@': 'assets/sass'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~assets/sass/style.sass'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
