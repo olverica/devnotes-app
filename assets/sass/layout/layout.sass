@@ -1,0 +1,30 @@
+@use "sass:map"
+
+html
+  font-size: 10px
+
+body 
+  font-family: 'Poppins', sans-serif
+  font-weight: $medium
+  color: $color-white
+  background-color: $color-dark-6
+
+button
+  cursor: pointer
+  // 
+  &:active
+    transform: scale(0.99)
+
+// ==========
+// containers
+// ==========
+
+.container 
+  // Using arrays to pass container max-width and padding
+  // $array-example: (desktop: 0px, laptop: 0px, tablet: 0px, fablet: 0px, mobile: 0px)
+  // max-width values array
+  $container-width: (desktop: 1600px,) 
+  // padding values array
+  $container-padding: (desktop: 30px, laptop: 20px, tablet: 15px, fablet: 15px, mobile: 10px) 
+  // including container mixin with arrays above
+  @include container($container-width, $container-padding)

@@ -1,0 +1,11 @@
+// ===================
+// adaptive view width
+// ===================
+  
+@function vw($px, $viewport)
+  @return #{$px / $viewport * 100}vw    
+
+@mixin vw($attribute, $px, $viewport)
+  #{$attribute}: vw($px, $viewport)
+  debug-#{$attribute}-viewport: $viewport
+  debug-#{$attribute}-pixels: $px 

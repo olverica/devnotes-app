@@ -1,0 +1,87 @@
+// ====================
+// breakpoint variables
+// ====================
+
+$breakpoint-wide: 2560px     // ultra wide displays with 21:9 aspect ratio etc.
+$breakpoint-desktop: 1920px  // regular desktop displays with 16:9 or 16:10 aspect ratio etc.
+$breakpoint-laptop: 1280px   // laptops, HD displays, large tablets etc.
+$breakpoint-tablet: 991px    // tablets, landscape mobiles etc.
+$breakpoint-fablet: 768px    // fablets, large mobiles etc.
+$breakpoint-mobile: 480px    // mobiles etc.
+
+// =======================
+// breakpoint media mixins
+// =======================
+
+@mixin media-custom-max($max-width)
+  @media (max-width: $max-width)
+    @content
+// 
+@mixin media-custom-min($min-width)
+  @media (min-width: $min-width)
+    @content
+
+  
+@mixin media-wide
+  @media (min-width: $breakpoint-desktop)
+    @content
+// 
+@mixin media-desktop
+  @media (max-width: $breakpoint-desktop)
+    @content  
+// 
+@mixin media-laptop
+  @media (max-width: $breakpoint-laptop)
+    @content  
+// 
+@mixin media-tablet
+  @media (max-width: $breakpoint-tablet)
+    @content  
+// 
+@mixin media-fablet
+  @media (max-width: $breakpoint-fablet)
+    @content    
+// 
+@mixin media-mobile
+  @media (max-width: $breakpoint-mobile)
+    @content   
+
+// =============================================================
+// fuction for linear resizing container for ultra wide displays
+// =============================================================
+
+@function linear-resize($from-width, $to-width)
+  $k: ($from-width - $to-width) / ($breakpoint-desktop - $breakpoint-wide) 
+  $b: $from-width -$breakpoint-desktop * $k
+  @return calc(100% * #{$k} + #{$b})
+  
+// ==========================
+// responsive container mixin
+// ==========================
+
+@mixin container($container-width, $container-padding)
+  margin: 0 auto
+  // 
+  @include media-wide
+    max-width: $breakpoint-desktop
+    width: linear-resize(map-get($container-width, desktop), $breakpoint-desktop)
+  // 
+  @include media-desktop
+    max-width: map-get($container-width, desktop)
+    padding: 0 map-get($container-padding, desktop)
+  // 
+  @include media-laptop
+    max-width: map-get($container-width, laptop)
+    padding: 0 map-get($container-padding, laptop)
+  // 
+  @include media-tablet
+    max-width: map-get($container-width, tablet)
+    padding: 0 map-get($container-padding, tablet)
+  // 
+  @include media-fablet
+    max-width: map-get($container-width, fablet)
+    padding: 0 map-get($container-padding, fablet)
+  // 
+  @include media-mobile
+    max-width: map-get($container-width, mobile)
+    padding: 0 map-get($container-padding, mobile)
