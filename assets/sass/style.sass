@@ -25,3 +25,47 @@
 // ============
 
 @import pages/login
+
+// =============
+// blocks import
+// =============
+
+@import sections/navbar/navbar
+
+// temp
+.context
+  padding: 6px 6px
+  display: grid
+  grid-auto-rows: max-content
+  grid-template-columns: 1fr
+  width: 150px
+  background: transparentize($color-dark-8, 0.02)
+  border-radius: 10px
+
+.context__button
+  padding: 6px 10px
+  color: $color-gray-60
+  font-size: 1.4rem
+  border-radius: 5px
+  transition: background .2s
+  // grid
+  display: grid
+  grid-auto-flow: column
+  align-items: center
+  grid-auto-columns: max-content
+  justify-content: space-between
+  // 
+  &::after
+    font-family: "ol-icons"
+    content: "check"
+    font-size: 1rem
+    opacity: 0
+    transition: opacity .1s 
+  // 
+  &--active
+    &::after
+      opacity: 1
+  // 
+  &:hover
+    background: $color-dark-12
+  
