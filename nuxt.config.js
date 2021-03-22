@@ -56,7 +56,8 @@ export default {
     babel: {
       plugins:  [
         ["@babel/proposal-decorators", { "legacy": true }],
-        ["@babel/proposal-class-properties", { "loose": true }]
+        ["@babel/proposal-class-properties", { "loose": true }],
+        '@babel/preset-typescript'
       ]
     }
   }

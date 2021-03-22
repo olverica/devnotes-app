@@ -21,7 +21,7 @@ import Vue from 'vue'
 import {Component} from 'nuxt-property-decorator'
 
 @Component
-export default class LoginPage extends Vue{
+export default class LoginPage extends Vue {
 
 }
 </script>
