@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'devNotes',
+    title: 'devnotes',
     htmlAttrs: {
       lang: 'en'
     },
@@ -53,5 +53,12 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    babel: {
+      plugins:  [
+        ["@babel/proposal-decorators", { "legacy": true }],
+        ["@babel/proposal-class-properties", { "loose": true }],
+        '@babel/preset-typescript'
+      ]
+    }
   }
 }
