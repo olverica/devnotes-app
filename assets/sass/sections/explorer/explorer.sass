@@ -1,0 +1,126 @@
+.explorer
+  width: 250px
+  height: 100vh
+  background: $color-dark-8
+  position: sticky
+  top: 0
+  padding: 40px 20px
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: max-content 1fr
+  grid-row-gap: 30px
+
+
+.navigation
+  display: flex
+  flex-direction: column
+  gap: 20px
+  
+
+.navigation__item
+  font-size: 1.6rem
+  color: $color-gray-60
+  cursor: pointer
+  // grid
+  display: flex
+  align-items: center
+  gap: 10px
+  padding: 0 10px
+  line-height: 1
+  
+.navigation__item_name
+  font-size: inherit
+  display: flex
+  align-items: center
+  column-gap: 10px
+  width: 100%
+  // 
+  &::before
+    font-family: "ol-icons"
+    font-size: 1.8rem
+
+.navigation__item--file
+  .navigation__item_name
+    &::before
+      content: "file"
+      color: $color-gray-80
+
+.navigation__item--folder
+  &::before
+    font-family: "ol-icons"
+    content: "chevron"
+    font-size: .8rem
+    transform: rotate(-90deg)
+  // 
+  .navigation__item_name
+    &::before
+      content: "folder"
+      color: #E5B745
+
+.navigation__item--tag
+  padding: 6px 10px
+  background: red
+  border-radius: 10px
+  background: transparentize(#FFD369, .9)
+  color: #FFD369
+  font-weight: $regular
+  // 
+  &::after
+    font-family: "ol-icons"
+    content: "chevron"
+    font-size: .8rem
+    transform: rotate(90deg)
+  // 
+  .navigation__item_name
+    &::before
+      content: "tag"
+      color: inherit
+
+.navigation__item_sticker
+  min-width: 1.4rem
+  height: 1.4rem
+  font-size: .8rem
+  border-radius: 100%
+  color: $color-white
+  display: flex
+  align-items: center
+  justify-content: center
+
+.navigation__item_sticker--updated
+  background: #E5B745
+  
+.navigation__item_sticker--created
+  background: #29CC7A
+
+.navigation__folder_outer
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+.navigation__folder_inner
+  display: flex
+  flex-direction: column
+  gap: 20px
+  //
+  .navigation__item
+    &::before
+      font-family: "ol-icons"
+      content: "dot"
+      font-size: .8rem
+
+.navigation__tag_outer
+  display: flex
+  flex-direction: column
+  gap: 20px
+  
+.navigation__tag_inner
+  display: flex
+  flex-direction: column
+  gap: 20px
+  
+ 
+// ===============
+// import elements
+// ===============
+
+@import explorer_header

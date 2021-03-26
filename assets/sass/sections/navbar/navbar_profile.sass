@@ -1,11 +1,15 @@
 .navbar__profile
+  height: 60px
+  margin-bottom: 30px
+  max-width: max-content
+  overflow: hidden
+  // 
   display: grid
   grid-template-columns: max-content 1fr
   grid-template-rows: max-content max-content
   grid-column-gap: 10px
   grid-row-gap: 5px
-  overflow: hidden
-  width: max-content
+  align-content: center
 
 
 .navbar__profile_image
@@ -19,7 +23,6 @@
   @include background-image
   // temp
   background-image: url(https://images.unsplash.com/photo-1573007974656-b958089e9f7b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80)
-  transition: height .3s, width .3s, margin .3s
   // 
   &::before
     font-family: "ol-icons"
@@ -43,7 +46,7 @@
   &:hover
     &::before
       opacity: 1
-      font-size: 2.4rem
+      font-size: 24px
       transform: rotate(45deg)
     
 
@@ -52,15 +55,10 @@
   font-size: 1.8rem
   color: $color-white
   @include text-overflow
-  // temp
-  transition: opacity .2s
 
   
 .navbar__profile_type
-  width: max-content
-  height: max-content
+  align-self: start
   font-size: 1.2rem
   color: $color-gray-60
   @include text-overflow
-  // temp
-  transition: opacity .2s

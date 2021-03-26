@@ -1,0 +1,70 @@
+// ==================== 
+// transition TO styles
+// ====================
+
+.navbar--minimized
+  width: 80px
+  // 
+  .navbar__profile_image
+    width: 40px
+    height: 40px
+    // 
+    &::before
+      font-size: 18px
+  //
+  .navbar__link
+    padding: 11px
+  //
+  .navbar__profile_name,
+  .navbar__profile_type,
+  .navbar__link_name,
+  .navbar__link--pinned::after,
+  .navbar__logo_title
+    opacity: 0
+  // 
+  .navbar__links--pinned
+    &::-webkit-scrollbar
+      width: 0
+  // 
+  .navbar__logo_img
+    width: 40px
+
+// ===========
+// transitions
+// ===========
+
+.navbar
+  // durations
+  $long-duration: .3s
+  $short-duration: .2s
+  // timing functions
+  $long-function: ease-in-out
+  $short-function: ease-in-out
+  // 
+  transition-property: width
+  transition-duration: $long-duration
+  transition-timing-function: $long-function
+  // 
+  .navbar__profile_image,
+  .navbar__logo_img
+    transition-property: height, width
+    transition-duration: $long-duration
+    transition-timing-function: $long-function
+  // 
+  .navbar__link
+    transition-property: padding, background
+    transition-duration: $short-duration
+    transition-timing-function: $short-function
+  // 
+  .navbar__link_name
+    transition-property: opacity
+    transition-duration: $short-duration
+    transition-timing-function: $short-function
+  // 
+  .navbar__profile_name,
+  .navbar__profile_type,,
+  .navbar__link--pinned::after,
+  .navbar__logo_title
+    transition-property: opacity
+    transition-duration: $short-duration
+    transition-timing-function: $short-function
