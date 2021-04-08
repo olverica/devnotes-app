@@ -6,7 +6,7 @@
     <form class="auth__form">
       <div class="auth__input">Your email adress</div>
       <div class="auth__input">Your password code</div>
-      <button class="auth__button" type="button" @click="some">confirm</button>
+      <button class="auth__button" type="button">confirm</button>
       <a class="auth__link">Forgot your password?</a>
     </form>
 
@@ -21,8 +21,6 @@ import {Component} from 'nuxt-property-decorator'
 
 @Component
 export default class LoginPage extends Vue {
-  some() {
-    console.log(123)
-  }
+
 }
 </script>

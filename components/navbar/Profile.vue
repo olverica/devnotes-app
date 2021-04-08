@@ -14,7 +14,7 @@ import Vue from 'vue'
 import {Component, Prop} from 'nuxt-property-decorator'
 
 @Component
-export default class NavbarLink extends Vue {
+export default class Profile extends Vue {
   
   // TO DO
   @Prop({type: String, default: '' }) avatar!: string;

@@ -13,9 +13,11 @@
       <navbar-pinned :links="pinned"/>
     </div>
 
-    <navbar-logo
-      @click.native="toggle"/>
-
+    <client-only>
+      <navbar-logo 
+        @click.native="toggle"/>
+    </client-only>
+    
   </aside>
 </template>
 
@@ -29,18 +31,18 @@ export default class Navbar extends Vue {
   private shrinked = false;
   
   private links = [
-    { icon: 'home',     label: 'home',            to: ''},
-    { icon: 'github',   label: 'github projects', to: ''},
-    { icon: 'notebook', label: 'other projects',  to: ''},
-    { icon: 'stack',    label: 'knowledge base',  to: ''},
+    {icon: 'home',     label: 'home',            to: '/home'},
+    {icon: 'github',   label: 'github projects', to: '/home#git'},
+    {icon: 'notebook', label: 'other projects',  to: '/home#other'},
+    {icon: 'stack',    label: 'knowledge base',  to: '/home#knowledge', disabled: true},
   ]
 
   private pinned = [
-    { icon: 'home',     label: 'И',            to: ''},
-    { icon: 'home',     label: 'С',            to: ''},
-    { icon: 'home',     label: 'Л',            to: ''},
-    { icon: 'home',     label: 'А',            to: ''},
-    { icon: 'home',     label: 'М',            to: ''},
+    {icon: 'home', label: 'И', to: '/notes/owo'},
+    {icon: 'home', label: 'С', to: '/notes/owo'},
+    {icon: 'home', label: 'Л', to: '/notes/owo'},
+    {icon: 'home', label: 'А', to: '/notes/owo'},
+    {icon: 'home', label: 'М', to: '/notes/owo'},
   ]
 
   toggle() {

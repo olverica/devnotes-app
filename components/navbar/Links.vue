@@ -4,9 +4,10 @@
     :class="{'navbar__links--pinned': pinned}">
 
     <navbar-link
-      v-for="({label, icon, to}, index) in links"
+      v-for="({disabled, label, icon, to}, index) in links"
       :key="index"
 
+      :disabled="disabled"
       :label="label"
       :icon="icon"
       :to="to"/>
@@ -19,13 +20,14 @@ import Vue from 'vue'
 import {Component, Prop} from 'nuxt-property-decorator'
 
 interface Link {
+  disabled?: boolean
   label: string;
   icon: string;
   to: string;
 }
 
 @Component
-export default class NavbarLinks extends Vue {
+export default class Links extends Vue {
   
   @Prop({type: Array, default: () => [] }) links!: Link[];
 
