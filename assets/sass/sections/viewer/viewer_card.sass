@@ -1,0 +1,82 @@
+.viewer__card
+  width: 100%
+  height: max-content
+  padding-bottom: 66.66%
+  border-radius: 40px
+  background: $color-white-96
+  cursor: pointer
+  // 
+  position: relative
+  overflow: hidden
+
+
+.viewer__card_inner
+  padding: 30px
+  // position
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  // grid
+  display: grid
+  grid-template-columns: 100%
+  grid-template-rows: 1fr max-content max-content
+  justify-content: space-between
+  grid-row-gap: 6px
+  overflow: hidden
+
+
+.viewer__card_header
+  height: max-content
+  // flex
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.viewer__card_icon
+  font-size: 60px
+  height: max-content
+  width: max-content
+
+.viewer__card_button
+  color: $color-gray-20
+  font-size: 20px
+  width: max-content
+  height: max-content
+
+
+.viewer__card_title
+  width: 100%
+  height: max-content
+  // font
+  font-size: 2.4rem
+  font-weight: $semibold   
+  color: $color-gray-20
+  // flex 
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 10px
+  h5
+    @include text-overflow
+
+
+.viewer__card_footer
+  color: $color-gray-40
+  overflow: hidden
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 10px
+
+
+.viewer__card_date,
+.viewer__card_details
+  font-size: 1.2rem
+  font-weight: $semibold
+  white-space: nowrap
+
+.viewer__card_details
+  @include text-overflow
+  

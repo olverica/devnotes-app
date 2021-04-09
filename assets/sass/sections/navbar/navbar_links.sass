@@ -12,6 +12,12 @@
   // grid
   grid-area: links--pinned
   // 
+  .navbar__link
+    &::after
+      @include ol-icons
+      content: "pin"
+      font-size: 1.4rem
+  // 
   &::-webkit-scrollbar
     width: 8px
   // 
@@ -62,11 +68,7 @@
     background: $color-white
 
 
-.navbar__link--pinned
-  &::after
-    font-family: "ol-icons"
-    content: "pin"
-    font-size: 1.4rem
+
 
 
 .navbar__link_icon

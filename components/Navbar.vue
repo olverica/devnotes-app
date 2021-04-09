@@ -3,7 +3,7 @@
     class="navbar"
     :class="{'navbar--minimized': shrinked}">
 
-    <div class="navbar__scrollable">
+    <nav class="navbar__scrollable">
 
       <div class="navbar__profile">
         <button class="navbar__profile_image"></button>
@@ -39,59 +39,14 @@
 
       <div class="navbar__links navbar__links--pinned">
 
-        <button class="navbar__link navbar__link--pinned">
+        <button class="navbar__link">
           <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
-        </button>
-
-        <button class="navbar__link navbar__link--pinned">
-          <i class="navbar__link_icon ol-icons">github</i>
-          <span class="navbar__link_name">ol.forms</span>
+          <span class="navbar__link_name">pinned project</span>
         </button>
 
       </div>
 
-    </div>
+    </nav>
 
     <div
       class="navbar__logo"

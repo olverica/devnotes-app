@@ -31,45 +31,50 @@
     <div class="navigation">
       
       <button class="navigation__item navigation__item--file">
+        <i class="navigation__item_icon"></i>
         <h6 class="navigation__item_name">file name</h6>
-        <i class="navigation__item_sticker navigation__item_sticker--updated ol-icons">updated</i>
+        <i class="sticker sticker--updated">updated</i>
       </button>
 
       <div class="navigation__folder_outer">
 
         <button class="navigation__item navigation__item--folder">
+          <i class="navigation__item_icon"></i>
           <h6 class="navigation__item_name">folder name</h6>
-          <i class="navigation__item_sticker navigation__item_sticker--created ol-icons">created</i>
+          <i class="sticker sticker--created">created</i>
         </button>
 
         <div class="navigation__folder_inner">
 
           <button class="navigation__item navigation__item--file">
+            <i class="navigation__item_icon"></i>
             <h6 class="navigation__item_name">file name</h6>
-            <i class="navigation__item_sticker navigation__item_sticker--updated ol-icons">updated</i>
+            <i class="sticker sticker--counted">7</i>
           </button>
 
           <button class="navigation__item navigation__item--file">
+            <i class="navigation__item_icon"></i>
             <h6 class="navigation__item_name">file name</h6>
-            <i class="navigation__item_sticker navigation__item_sticker--updated ol-icons">updated</i>
+            <i class="sticker sticker--opened">opened</i>
           </button>
 
           <div class="navigation__tag_outer">
 
             <button class="navigation__item navigation__item--tag">
+              <i class="navigation__item_icon"></i>
               <h6 class="navigation__item_name">tag name</h6>
             </button>
             
             <div class="navigation__tag_inner">
 
               <button class="navigation__item navigation__item--file">
+                <i class="navigation__item_icon"></i>
                 <h6 class="navigation__item_name">file name</h6>
-                <i class="navigation__item_sticker navigation__item_sticker--updated ol-icons">updated</i>
               </button>
 
               <button class="navigation__item navigation__item--file">
+                <i class="navigation__item_icon"></i>
                 <h6 class="navigation__item_name">file name</h6>
-                <i class="navigation__item_sticker navigation__item_sticker--updated ol-icons">updated</i>
               </button>
 
             </div>
@@ -80,6 +85,25 @@
 
       </div>
 
+      <button class="navigation__item navigation__item--developers">
+        <i class="navigation__item_icon"></i>
+        <h6 class="navigation__item_name">developers</h6>
+      </button>
+
+      <button class="navigation__item navigation__item--customer">
+        <i class="navigation__item_icon"></i>
+        <h6 class="navigation__item_name">customer</h6>
+      </button>
+
+      <button class="navigation__item navigation__item--archive">
+        <i class="navigation__item_icon"></i>
+        <h6 class="navigation__item_name">archive</h6>
+      </button>
+
+      <button class="navigation__item navigation__item--trash">
+        <i class="navigation__item_icon"></i>
+        <h6 class="navigation__item_name">trash</h6>
+      </button>
 
     </div>
 

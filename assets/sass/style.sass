@@ -19,6 +19,7 @@
 
 @import fonts/ol-icons
 @import fonts/poppins
+@import fonts/roboto-mono
 
 // ============
 // pages import
@@ -26,16 +27,19 @@
 
 @import pages/login
 
-// =============
-// blocks import
-// =============
+// =================
+// components import
+// =================
+
+@import components/sticker
+
+// ===============
+// sections import
+// ===============
 
 @import sections/navbar/navbar
 @import sections/explorer/explorer
-
-
-
-
+@import sections/viewer/viewer
 
 
 // =========
@@ -46,7 +50,15 @@
   display: grid
   grid-template-columns: max-content max-content 1fr
 
+.tmp
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr 1fr 
+  grid-template-rows: max-content
+  gap: 30px
+
+
 .context
+  margin-top: 20px
   padding: 6px 6px
   display: grid
   grid-auto-rows: max-content
@@ -54,6 +66,16 @@
   width: 150px
   background: transparentize($color-dark-8, 0.02)
   border-radius: 10px
+  position: relative
+  &::before
+    @include ol-icons
+    content: "tooltip_arrow"
+    font-size: 10px
+    position: absolute
+    top: 0
+    left: 0
+    transform: translate(100%,-100%)
+    color: transparentize($color-dark-8, 0.02)
 
 .context__button
   padding: 6px 10px
