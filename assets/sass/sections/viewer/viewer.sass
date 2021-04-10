@@ -1,15 +1,24 @@
 .viewer
   padding: 40px
+  display: grid
+  grid-template-areas: "controls" "area"
+  grid-template-columns: 1fr
+  grid-template-rows: max-content 1fr
+  grid-row-gap: 40px
 
-  
 .viewer__controls
-  display: flex
-  width: 100%
-  margin-bottom: 40px
+  grid-area: controls
+
+.viewer__area
+  grid-area: area
+  // temp
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-auto-rows: max-content 
+  grid-gap: 30px
 
 
-.viewer__button,
-.viewer__dropdown
+.viewer__button
   height: 40px
   display: flex
   align-items: center
@@ -24,6 +33,6 @@
   .ol-icons
     font-size: 1.8rem
 
-
+@import viewer_controls
 @import viewer_card
 @import viewer_card_types

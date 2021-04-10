@@ -3,11 +3,21 @@
 
     <div class="explorer__controls">
 
-      <button class="explorer__project">
-        <i class="explorer__project_icon ol-icons">github</i>
-        <h6 class="explorer__project_title">ol.forms</h6>
-        <i class="explorer__project_chevron ol-icons">chevron</i>
-      </button>
+      <fieldset class="explorer__dropdown dropdown">
+        <button class="dropdown__item">
+          <i class="dropdown__item_icon">github</i>
+          <span class="dropdown__item_name">englishnerd</span>
+        </button>
+        <div class="dropdown__body">
+          <button class="dropdown__settings">settings</button>
+          <div class="dropdown__body_scrollable">
+            <button class="dropdown__item">
+              <i class="dropdown__item_icon">github</i>
+              <span class="dropdown__item_name">project name</span>
+            </button>                    
+          </div>
+        </div>
+      </fieldset>
 
       <button class="explorer__control">
         back
@@ -55,7 +65,7 @@
           <button class="navigation__item navigation__item--file">
             <i class="navigation__item_icon"></i>
             <h6 class="navigation__item_name">file name</h6>
-            <i class="sticker sticker--opened">opened</i>
+            <i class="sticker sticker--opened">this</i>
           </button>
 
           <div class="navigation__tag_outer">

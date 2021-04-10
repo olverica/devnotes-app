@@ -1,17 +1,20 @@
 <template>
 
-  <section class="auth container">
+  <main class="login">
 
-    <img class="auth__logo" src="img/svg/olverica_logo.svg" alt="logo">
-    <form class="auth__form">
-      <div class="auth__input">Your email adress</div>
-      <div class="auth__input">Your password code</div>
-      <button class="auth__button" type="button">confirm</button>
-      <a class="auth__link">Forgot your password?</a>
-    </form>
+    <section class="auth container">
 
-  </section>
+      <img class="auth__logo" src="img/svg/olverica_logo.svg" alt="logo">
+      <form class="auth__form">
+        <div class="auth__input">Your email adress</div>
+        <div class="auth__input">Your password code</div>
+        <button class="auth__button" type="button">confirm</button>
+        <a class="auth__link" href="#">Forgot your password?</a>
+      </form>
 
+    </section>
+
+  </main>
 
 </template>
 

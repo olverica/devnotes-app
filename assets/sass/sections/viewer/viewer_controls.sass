@@ -1,0 +1,42 @@
+.viewer__controls
+  display: grid
+  grid-template-areas: "left tags right"
+  grid-template-columns: max-content 1fr max-content
+  grid-auto-rows: max-content
+  grid-column-gap: 20px
+
+.viewer__controls_left,
+.viewer__controls_right,
+.viewer__controls_tags
+  width: max-content
+  display: flex
+  column-gap: 10px
+
+.viewer__controls_left
+  grid-area: left
+
+.viewer__controls_right
+  grid-area: right
+
+.viewer__controls_tags
+  grid-area: tags
+  overflow: hidden
+  width: 100%
+
+.viewer__tag
+  height: 40px
+  min-width: max-content
+  padding: 0 20px
+  border-radius: 10px
+  font-size: 16px
+  // flex 
+  display: flex
+  gap: 10px
+  align-items: center
+  justify-content: center
+  background: transparentize(#000, 0.8)
+  // 
+  &::before
+    @include ol-icons
+    content: "tag"
+    font-size: 18px    
