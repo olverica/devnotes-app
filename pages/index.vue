@@ -17,37 +17,9 @@
               <i class="ol-icons">go_back</i>
             </button>
 
-            <fieldset class="viewer__dropdown dropdown">
-              <button class="dropdown__item">
-                <i class="dropdown__item_icon">github</i>
-                <span class="dropdown__item_name">englishnerd</span>
-              </button>
-              <div class="dropdown__body">
-                <button class="dropdown__settings">settings</button>
-                <div class="dropdown__body_scrollable">
-                  <button class="dropdown__item">
-                    <i class="dropdown__item_icon">github</i>
-                    <span class="dropdown__item_name">project name</span>
-                  </button>                    
-                </div>
-              </div>
-            </fieldset>
+            <div class="viewer__dropdown dropdown"></div>
 
-            <fieldset class="viewer__dropdown viewer__dropdown--folder dropdown">
-              <button class="dropdown__item">
-                <i class="dropdown__item_icon">folder</i>
-                <span class="dropdown__item_name">root</span>
-              </button>
-              <div class="dropdown__body">
-                <button class="dropdown__settings">settings</button>
-                <div class="dropdown__body_scrollable">
-                  <button class="dropdown__item">
-                    <i class="dropdown__item_icon">folder</i>
-                    <span class="dropdown__item_name">folder name</span>
-                  </button>                    
-                </div>
-              </div>
-            </fieldset>
+            <div class="viewer__dropdown viewer__dropdown--folder dropdown"></div>
           </div>
 
           <!-- <div class="viewer__controls_tags">
