@@ -2,7 +2,9 @@
   <nuxtLink 
     class="navbar__link" 
     :class="{'navabar__link--pinned': pinned}"
-    :exactActiveClass="'navbar__link--active'"
+
+    :exact-active-class="exactClass"
+    :active-class="activeClass"
     :disabled="disabled"
     :to="to">
 
@@ -34,5 +36,16 @@ export default class Link extends Vue {
   @Prop({type: String, default: '' }) pinned!: string;
 
   @Prop({type: Boolean, default: false }) disabled!: boolean;
+
+  @Prop({type: Boolean, default: false}) exact!: boolean;
+
+
+  get activeClass(): string {
+    return this.exact ?  '' : 'navbar__link--active';
+  }
+
+  get exactClass(): string {
+    return this.exact ? 'navbar__link--active': '';
+  }
 }
 </script>

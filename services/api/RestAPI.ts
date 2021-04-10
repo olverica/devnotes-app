@@ -1,5 +1,5 @@
 
-import API from '~/services/API'
+import API from '~/services/api/API'
 
 export default class RestAPI implements API {
     
