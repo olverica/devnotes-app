@@ -1,6 +1,6 @@
 
-import ModelRepository from '~/services/ModelRepository'
-import DummyAPI from '~/services/DummyAPI'
+import ModelRepository from '~/services/model/ModelRepository'
+import DummyAPI from '~/services/api/DummyAPI'
 
 
 

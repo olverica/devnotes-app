@@ -24,14 +24,14 @@
 <script lang="ts">
 import Vue from 'vue' 
 import {Component} from 'nuxt-property-decorator'
-
+  
 @Component
 export default class Navbar extends Vue {
   
   private shrinked = false;
   
   private links = [
-    {icon: 'home',     label: 'home',            to: '/home'},
+    {icon: 'home',     label: 'home',            to: '/home', exact: true},
     {icon: 'github',   label: 'github projects', to: '/home#git'},
     {icon: 'notebook', label: 'other projects',  to: '/home#other'},
     {icon: 'stack',    label: 'knowledge base',  to: '/home#knowledge', disabled: true},

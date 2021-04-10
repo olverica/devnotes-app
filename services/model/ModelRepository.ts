@@ -1,6 +1,6 @@
 
-import API from '~/services/API'
-import RestAPI from '~/services/RestAPI'
+import API from '~/services/api/API'
+import RestAPI from '~/services/api/RestAPI'
 
 
 abstract class ModelRepository<Model, CreateRequest extends object, UpdateRequest extends object> {
