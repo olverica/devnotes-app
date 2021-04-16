@@ -3,7 +3,12 @@ import API from '~/services/api/API'
 import RestAPI from '~/services/api/RestAPI'
 
 
-abstract class ModelRepository<Model, CreateRequest extends object, UpdateRequest extends object> {
+export type Request = object;
+
+export type Key = number|string;
+
+
+export default abstract class ModelRepository<Model, CreateRequest extends Request, UpdateRequest extends Request> {
 
     private readonly api: API;
 
@@ -13,7 +18,7 @@ abstract class ModelRepository<Model, CreateRequest extends object, UpdateReques
         this.api = api;
     }
 
-    public async find(key: number|string): Promise<Model> {
+    public async find(key: Key): Promise<Model> {
         let path = this.createPath(key);
 
         let response = await this.api.find(path);
@@ -31,7 +36,7 @@ abstract class ModelRepository<Model, CreateRequest extends object, UpdateReques
         return model;
     }
 
-    public async update(key: number|string, request: UpdateRequest): Promise<Model> {
+    public async update(key: Key, request: UpdateRequest): Promise<Model> {
         let path = this.createPath(key);
         
         let response = await this.api.update(path, request);
@@ -42,20 +47,17 @@ abstract class ModelRepository<Model, CreateRequest extends object, UpdateReques
 
     }
 
-    public async delete(key: number|string): Promise<void> {
+    public async delete(key: Key): Promise<void> {
         let path = this.createPath(key);
 
         await this.api.delete(path);
     }
 
-    private createPath(key: number|string): string {
+    private createPath(key: Key): string {
         return `${this.path}/${key}`;
     }
 
     protected convertResponse(response: object): Model {
         return response as unknown as Model;
     }
-
 }
-
-export default ModelRepository;

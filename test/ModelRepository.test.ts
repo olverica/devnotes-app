@@ -3,7 +3,6 @@ import ModelRepository from '~/services/model/ModelRepository'
 import DummyAPI from '~/services/api/DummyAPI'
 
 
-
 interface CreateUpdateRequest {
     name: string
 }
@@ -21,12 +20,12 @@ class DummyUserRepository extends ModelRepository<DummyUser, CreateUpdateRequest
 }
 
 
-describe('Repository', () => {
+describe('API repository', () => {
     
     let api = new DummyAPI();
     let repository = new DummyUserRepository(api);
 
-    test('Repository should create', async () => {
+    test('should create', async () => {
         let data = { name: 'John'};
        
         let created = await repository.create(data);
@@ -34,7 +33,7 @@ describe('Repository', () => {
         expect(created.name).toEqual(data.name);
     });
 
-    test('Repository should search', async () => {
+    test('should search', async () => {
         let data = { name: 'John'};
 
         let created = await repository.create(data);
@@ -43,7 +42,7 @@ describe('Repository', () => {
         expect(founded.id).toEqual(created.id);
     });
 
-    test('Repository should update', async () => {
+    test('should update', async () => {
         let initalData = { name: 'Roe'}
         let created = await repository.create(initalData);
 
@@ -53,7 +52,7 @@ describe('Repository', () => {
         expect(edited.name).toEqual(editedData.name);
     });
 
-    test('Repository should delete', async () => {
+    test('should delete', async () => {
         let data = { name: 'Roe'}
         let created = await repository.create(data);
 
