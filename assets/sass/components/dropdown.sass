@@ -1,0 +1,182 @@
+// ==============
+// dropdown types
+// ==============
+
+// viewer
+
+.viewer__dropdown
+  padding: 0 20px
+  border-radius: 10px
+  color: $color-gray-20
+  background: $color-white-96
+  // 
+  .dropdown__item_icon
+    font-size: 18px
+
+  .dropdown__item_name
+    font-size: 16px
+
+  .dropdown__settings
+    color: $color-gray-40
+    background: $color-white-96
+  // 
+  .dropdown__body
+    // shape
+    border-color: $color-white-94
+    background: transparentize($color-white, .2)
+    box-shadow: 0 2px 20px transparentize($color-dark-6, .94)
+  // 
+  .dropdown__body_scrollable
+    @include scroll-secondary($color-white-94, $color-white-92)
+    // 
+    .dropdown__item
+      &:hover
+        color: $color-dark-10
+
+
+.viewer__dropdown--folder
+  .dropdown__item_icon
+    color: #e5b045
+
+// explorer 
+
+.explorer__dropdown
+  border-radius: 10px
+  color: $color-white
+  //
+  .dropdown__item_icon
+    font-size: 20px
+
+  .dropdown__item_name
+    font-size: 18px
+
+  .dropdown__settings
+    color: $color-gray-60
+    background: $color-dark-12
+  // 
+  .dropdown__body
+    // shape
+    border-color: $color-dark-12
+    background: transparentize($color-dark-10, .1)
+    box-shadow: 0 2px 20px transparentize($color-dark-6, .80)
+  // 
+  .dropdown__body_scrollable
+    @include scroll-secondary($color-dark-12, $color-dark-14)
+    // 
+    .dropdown__item
+      color: $color-gray-80
+      // 
+      &:hover
+        color: $color-white-92
+  
+// ======================
+// dropdown common styles
+// ======================
+
+.dropdown
+  height: 40px
+  // flex
+  display: flex
+  align-items: center
+  position: relative
+  column-gap: 10px
+  // 
+  &--active
+    .dropdown__body
+      max-height: 225px
+      opacity: 1
+    // 
+    &::after
+      transform: rotate(180deg)
+    
+
+.dropdown__item
+  width: 100%
+  overflow: hidden
+  // font
+  color: inherit
+  line-height: 1.4
+  // flex
+  display: flex
+  align-items: center
+  column-gap: 10px
+  // 
+  &::after
+    @include ol-icons
+    content: "chevron"
+    font-size: 8px
+    transition: transform .3s
+    cursor: pointer
+
+
+.dropdown__item_icon
+  @include ol-icons
+
+
+.dropdown__item_name
+  width: 100%
+  @include text-overflow
+
+  
+.dropdown__body
+  position: absolute
+  left: 0
+  top: 100%
+  z-index: 1
+  padding: 10px
+  margin-top: 5px
+  width: 100%
+  opacity: 0
+  max-height: 0
+  overflow: hidden
+  // flex
+  display: flex
+  flex-direction: column
+  row-gap: 10px
+  // shape
+  border-radius: 10px
+  border: 1px solid 
+  backdrop-filter: blur(10px) saturate(120%) 
+  //
+  transition: max-height .3s, opacity .3s
+
+
+.dropdown__body_scrollable
+  height: 100%
+  overflow: auto
+  // flex
+  display: flex
+  flex-direction: column
+  row-gap: 5px
+  //   
+  .dropdown__item
+    min-height: 30px
+    padding: 0 10px
+    transition: color .2s
+    // 
+    &::after
+      content: none
+  // 
+  .dropdown__item_icon
+    font-size: 16px
+  // 
+  .dropdown__item_name
+    font-size: 14px
+
+
+.dropdown__settings
+  width: 100%
+  min-height: 25px
+  border-radius: 6px
+  font-size: 12px
+  // flex
+  display: flex
+  align-items: center
+  justify-content: center
+  column-gap: 6px
+  // 
+  &::before
+    @include ol-icons
+    content: "settings"
+
+

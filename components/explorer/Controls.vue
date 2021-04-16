@@ -1,11 +1,7 @@
 <template>
   <div class="explorer__controls">
 
-    <button class="explorer__project">
-      <i class="explorer__project_icon ol-icons">github</i>
-      <h6 class="explorer__project_title">ol.forms</h6>
-      <i class="explorer__project_chevron ol-icons">chevron</i>
-    </button>
+    <!-- <div class="explorer__dropdown dropdown"></div> -->
 
     <button class="explorer__control">
       back

@@ -5,14 +5,31 @@ html
 
 body 
   font-family: 'Poppins', sans-serif
-  font-weight: $medium 
-  line-height: 1
+  font-weight: $medium
+  overflow-x: hidden 
+  overflow-y: overlay
+  @include scroll-primary
 
 button
   cursor: pointer
   // 
   &:active
-    transform: scale(0.99)
+    transform: scale(0.98)
+
+.login
+  background: $color-dark-6
+
+.project
+  display: grid
+  grid-template-columns: max-content 1fr 
+  grid-template-rows: auto
+
+// temp
+
+.root 
+  display: grid
+  grid-template-columns: max-content 1fr 
+  grid-template-rows: auto
 
 // ==========
 // containers
