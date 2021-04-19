@@ -1,53 +1,43 @@
-
-import TreeNode, {Key, ParentNode} from '~/services/notefs/node'
-import TreeContainer from '~/services/notefs/container'
 import QueryAction from '~/services/notefs/query/action'
+import NodeTreeSeacher from '~/services/notefs/searchers/node'
+import ParentTreeSeacher from '~/services/notefs/searchers/parent'
+import TreeNode, {Key, ParentNode} from '~/services/notefs/node'
 
-interface TargetNode extends TreeNode {
-    parent: Key
-}
 
 export default class DeleteAction implements QueryAction {
     
-    private readonly container: TreeContainer;
+    private readonly root: TreeNode;
 
     private readonly targetKey: Key;
 
     
-    constructor(container: TreeContainer, target: Key) {
-        this.container = container;
+    constructor(root: TreeNode, target: Key) {
         this.targetKey = target;
+        this.root = root;
     }
 
     public proceed(): void {
         let target = this.getTargetNode()
-        let parent = this.getParentNode(target);
+        let parent = this.getParentNode();
 
         this.removeChild(parent, target);
-        this.removeParent(target);
     }
 
+    private getTargetNode(): TreeNode {
+        let seacher = new NodeTreeSeacher(this.root);
+        let node = seacher.find(this.targetKey);
 
-    private getTargetNode(): TargetNode {
-        let target = this.findNode(this.targetKey)
-
-        if (target.parent === undefined)
-            throw Error('Cant delete node without parent');
-
-        return target as TargetNode;
+        return node;
     }
 
+    private getParentNode(): ParentNode {
+        let seacher = new ParentTreeSeacher(this.root);
+        let node = seacher.find(this.targetKey);
 
-    private getParentNode(target: TargetNode): ParentNode {
-        let parent = this.findNode(target.parent)
-
-        if (parent.children === undefined)
-            throw Error('Cant get children from leaf node')
-
-        return parent as ParentNode;
+        return node;
     }
 
-    private removeChild(parent: ParentNode, child: TargetNode) {
+    private removeChild(parent: ParentNode, child: TreeNode) {
         let children = parent.children;
 
         let index = children.indexOf(child)
@@ -55,15 +45,5 @@ export default class DeleteAction implements QueryAction {
             throw Error('Cant find child')
 
         children.splice(index, 1);
-    }
-
-    private removeParent(child: TargetNode) {
-        let detachedChild: TreeNode = child;
-
-        detachedChild.parent = undefined;
-    }
-
-    private findNode(key: Key): TreeNode {
-        return this.container.find(key);
     }
 }

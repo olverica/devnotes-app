@@ -1,11 +1,10 @@
 
-import {ParentNode, LeafNode} from '~/services/notefs/node'
-import TreeContainer from '~/services/notefs/container'
 import MoveAction from '~/services/notefs/query/actions/move'
+import {ParentNode, LeafNode} from '~/services/notefs/node'
+
 
 describe('Append action', () => {
 
-    let container: TreeContainer;
     let moving: MoveAction;
 
     let target: ParentNode;
@@ -23,35 +22,36 @@ describe('Append action', () => {
 
         parent = {id: 1, parent: 0, children: [target, leaf]}
         root = {id: 0, children: [ parent, ]};
-
-        container = new TreeContainer(root);
     });
 
     test('proceed should move node to parent children', () => {
         let to = root.id;
 
-        moving = new MoveAction(container, target.id, to);
+        moving = new MoveAction(root, target.id, to);
         moving.proceed();
 
-        let targetIndexAtRoot = 
+        let indexAtRoot = 
             root.children.indexOf(target);
 
-        expect(targetIndexAtRoot).not.toBe(-1);
+        expect(indexAtRoot).not.toBe(-1);
     });
 
-    test('proceed should set parrent to node', () => {
+    test('proceed should detach node from previous parent', () => {
         let to = root.id;
 
-        moving = new MoveAction(container, target.id, to);
+        moving = new MoveAction(root, target.id, to);
         moving.proceed();
 
-        expect(target.parent).toBe(root.id);
-    });
+        let indexAtParent = 
+            parent.children.indexOf(target);
 
+        expect(indexAtParent).toBe(-1);
+    });
+    
     test('proceed should fail if node moves to it children', () => {
         let to = child.id;
         
-        moving = new MoveAction(container, target.id, to);
+        moving = new MoveAction(root, target.id, to);
         let callback = () =>
             moving.proceed();
 
@@ -61,7 +61,7 @@ describe('Append action', () => {
     test('proceed should fail if it node moves to leaf node', () => {
         let to = leaf.id;
 
-        moving = new MoveAction(container, target.id, to);
+        moving = new MoveAction(root, target.id, to);
         let callback = () =>
             moving.proceed();
 

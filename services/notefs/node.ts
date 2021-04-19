@@ -4,7 +4,6 @@ export type Key = number|string;
 
 export interface LeafNode {
     id: Key,
-    parent?: Key,
 
     [index: string]: unknown
 }
@@ -16,4 +15,3 @@ export interface ParentNode extends TreeNode {
 export default interface TreeNode extends LeafNode {
     children?: TreeNode[]
 }
-

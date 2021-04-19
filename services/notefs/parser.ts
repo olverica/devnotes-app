@@ -27,7 +27,6 @@ export default class Parser {
 
     private isNode(target: object): target is TreeNode {
         return this.validateChildren(target) 
-            && this.validateParent(target)
             && this.validateId(target);
     }
 
@@ -39,16 +38,6 @@ export default class Parser {
         let isCorrect = Array.isArray(property);
 
         return isCorrect;        
-    }
-
-    private validateParent(target: object): boolean {
-        if (!!!target.hasOwnProperty('parent'))
-            return true;
-
-        let property = (target as any).parent
-        let isCorrect = this.isKey(property);
-
-        return isCorrect;
     }
 
     private validateId(target: object): boolean {

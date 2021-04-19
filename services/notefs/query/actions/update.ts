@@ -1,7 +1,7 @@
 
-import TreeNode, {Key} from '~/services/notefs/node'
-import TreeContainer from '~/services/notefs/container'
 import QueryAction from '~/services/notefs/query/action'
+import TreeNode, {Key} from '~/services/notefs/node'
+import TreeNodeSearcher from '~/services/notefs/searchers/node'
 
 
 export interface UpdateModel {
@@ -11,15 +11,15 @@ export interface UpdateModel {
 
 export default class UpdateAction implements QueryAction {
     
-    private readonly container: TreeContainer;
+    private readonly seacher: TreeNodeSearcher;
 
     private readonly targetKey: Key;
     
     private readonly model: UpdateModel;
 
     
-    constructor(container: TreeContainer, targetKey: Key, model: UpdateModel) {
-        this.container = container;
+    constructor(root: TreeNode, targetKey: Key, model: UpdateModel) {
+        this.seacher = new TreeNodeSearcher(root);
         this.targetKey = targetKey;
         this.model = model;
     }
@@ -31,11 +31,10 @@ export default class UpdateAction implements QueryAction {
 
     private validate(): void {
         let hasId = this.model.hasOwnProperty('id');
-        let hasParent = this.model.hasOwnProperty('parent');
         let hasChildren = this.model.hasOwnProperty('children');
         
-        if (hasId || hasParent || hasChildren)  
-            throw Error('Inccorect model type');
+        if (hasId || hasChildren)  
+            throw Error('Inccorect model. Cant edit id or children directly');
     }
 
     private update(): void {
@@ -51,6 +50,6 @@ export default class UpdateAction implements QueryAction {
     }
     
     private findNode(key: Key): TreeNode {
-        return this.container.find(key);
+        return this.seacher.find(key)
     }
 }

@@ -1,22 +1,22 @@
-import TreeNode, {Key} from '~/services/notefs/node'
-import TreeContainer from '~/services/notefs/container'
 import QueryAction from '~/services/notefs/query/action'
+import TreeNode, {Key} from '~/services/notefs/node'
+import TreeNodeSearcher from '~/services/notefs/searchers/node'
 
 export default class GetAction implements QueryAction {
     
-    private readonly container: TreeContainer;
+    private readonly root: TreeNode;
 
     private readonly target: Key;
 
     
-    constructor(container: TreeContainer, target: Key) {
-        this.container = container;
+    constructor(root: TreeNode, target: Key) {
+        this.root = root;
         this.target = target;
     }
 
     public proceed(): TreeNode {
-        let founded = 
-            this.container.find(this.target);
+        let seacher = new TreeNodeSearcher(this.root);
+        let founded = seacher.find(this.target);
 
         return founded;
     }

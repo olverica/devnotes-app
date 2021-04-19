@@ -1,7 +1,6 @@
-
-import TreeNode, {Key, ParentNode} from '~/services/notefs/node'
-import TreeContainer from '~/services/notefs/container'
 import QueryAction from '~/services/notefs/query/action'
+import TreeNodeSearcher from '~/services/notefs/searchers/node'
+import TreeNode, {Key, ParentNode} from '~/services/notefs/node'
 
 
 export interface AppendModel {
@@ -14,35 +13,24 @@ export interface AppendModel {
 
 export default class AppendAction implements QueryAction {
     
-    private readonly container: TreeContainer;
-
+    private readonly node: TreeNode;
+    
+    private readonly searcher: TreeNodeSearcher;
+    
     private readonly parentKey: Key;
-    
-    private readonly model: AppendModel;
 
     
-    constructor(container: TreeContainer, parentKey: Key, model: AppendModel) {
-        this.container = container;
+    constructor(root: TreeNode, parentKey: Key, node: TreeNode) {
+        this.searcher = new TreeNodeSearcher(root);
         this.parentKey = parentKey;
-        this.model = model;
+        this.node = node;
+
     }
 
     public proceed(): void {
-        let created = this.createNode();
-        this.append(created);
-    }
-
-
-    private createNode(): TreeNode {
-        let node: TreeNode = this.model;
-        node.parent = this.parentKey
-
-        return node;
-    }
-
-    private append(node: TreeNode) {
         let parent = this.getParent();
-        parent.children.push(node);        
+
+        parent.children.push(this.node);       
     }
 
     private getParent(): ParentNode {
@@ -55,6 +43,6 @@ export default class AppendAction implements QueryAction {
     }
 
     private findNode(key: Key): TreeNode {
-        return this.container.find(key);
+        return this.searcher.find(key)
     }
 }

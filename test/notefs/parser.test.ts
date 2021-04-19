@@ -26,17 +26,5 @@ describe('Tree parser', () => {
             parser.generate(root);
 
         expect(callback).toThrow();
-    });
-
-    test('failed to generate if node parent is invalid', () => {
-        let root = {
-            id: 123,
-            parent: false
-        };
-
-        let callback = () =>
-            parser.generate(root);
-
-        expect(callback).toThrow();
-    });
+    })
 });
