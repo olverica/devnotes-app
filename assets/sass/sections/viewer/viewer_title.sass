@@ -1,0 +1,30 @@
+.viewer__title
+  font-weight: $semibold
+  color: $color-gray-20
+  font-size: 28px
+  height: 30px
+  line-height: 1
+  // flex
+  display: flex
+  align-items: center
+  gap: 10px
+  // temp
+  grid-column: 1 / 5  
+  // 
+  &::before
+    @include ol-icons
+    font-size: inherit
+
+.viewer__title--tag 
+  &::before
+    content: "tag"
+
+.viewer__title--folder
+  &::before
+    content: "folder"
+    color: #e5b045
+
+.viewer__title--files
+  &::before
+    content: "files"
+    color: #7a96cc
