@@ -1,5 +1,4 @@
-
-import ModelRepository, {Key} from '~/services/model/ModelRepository'
+import ModelRepository, {Key} from '~/services/models/repository'
 import TreeQueryBuilder from '~/services/notefs/query/builder'
 
 

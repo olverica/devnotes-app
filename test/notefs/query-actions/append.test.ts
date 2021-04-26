@@ -1,4 +1,3 @@
-
 import AppendAction from '~/services/notefs/query/actions/append'
 import TreeNode, {ParentNode} from '~/services/notefs/node'
 

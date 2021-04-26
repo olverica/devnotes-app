@@ -1,8 +1,10 @@
 <template>
   <div class="navigation">
     
-    <!-- <explorer-navigation-node
-      :node="root"/> -->
+    <explorer-navigation-node
+      v-for="node in root.children"
+      :key="node.id"
+      :node="node"/>
 
 
     <explorer-navigation-private/>
@@ -18,18 +20,30 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-//import Tag from '~/services/navigation/Tag'
-//import File from '~/services/navigation/File' 
-//import Node from '~/services/navigation/Node' 
-//import Folder from '~/services/navigation/Folder'
 import {Component} from 'nuxt-property-decorator'
-
+import TreeNode from '~/services/notefs/node' 
+import TreeContainer from '~/services/notefs/container'
+ 
   
 @Component
 export default class Navigation extends Vue {
   
+  private container!: TreeContainer;
+
+  private root!: TreeNode;
   
-  beforeMount() {
+  beforeCreate() {
+    let root = {
+      id: 123,
+      name: 123,
+      type: 'root',
+      children: [
+        {id: 123, type: 'file', name: 'asd'}
+      ]
+    }
+
+    this.root = root;
+    console.log(123);
   }
 }
 </script>

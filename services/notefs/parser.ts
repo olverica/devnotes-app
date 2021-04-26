@@ -1,10 +1,13 @@
-
 import TreeContainer from '~/services/notefs/container'
 import TreeNode from '~/services/notefs/node'
+import NodeGuard from '~/services/notefs/guard'
 
 
-export default class Parser {
+export default class TreeParser {
 
+    private guard = new NodeGuard();
+
+    
     public generate(node: object): TreeContainer {
         
         let root = this.traverse(node);
@@ -26,35 +29,6 @@ export default class Parser {
     }
 
     private isNode(target: object): target is TreeNode {
-        return this.validateChildren(target) 
-            && this.validateId(target);
-    }
-
-    private validateChildren(target: object): boolean {
-        if (!!!target.hasOwnProperty('children'))
-            return true;
-        
-        let property = (target as any).children;
-        let isCorrect = Array.isArray(property);
-
-        return isCorrect;        
-    }
-
-    private validateId(target: object): boolean {
-        if (!!!target.hasOwnProperty('id'))
-            return false;
-        
-        let property = (target as any).id
-        let isCorrect = this.isKey(property);
-
-        return isCorrect;
-    }
-
-    private isKey(property: any): property is string|number {
-        let isCorrect = 
-            typeof property === 'string' || 
-            typeof property === 'number';
-
-        return isCorrect;
+        return this.guard.check(target);
     }
 }

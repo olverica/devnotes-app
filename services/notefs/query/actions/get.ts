@@ -16,7 +16,7 @@ export default class GetAction implements QueryAction {
 
     public proceed(): TreeNode {
         let seacher = new TreeNodeSearcher(this.root);
-        let founded = seacher.find(this.target);
+        let founded = seacher.findOrFail(this.target);
 
         return founded;
     }

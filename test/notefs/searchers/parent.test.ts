@@ -1,4 +1,3 @@
-
 import ParentTreeSeacher from '~/services/notefs/searchers/parent'
 import TreeNode from '~/services/notefs/node'
 
@@ -7,7 +6,7 @@ describe('Parent searcher', () => {
     let root: TreeNode;
     let target: TreeNode;
 
-    
+
     beforeEach(() => {
         target = { id: 123 };
         root = { id: 0, children: [target] }

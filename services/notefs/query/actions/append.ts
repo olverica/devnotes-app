@@ -43,6 +43,6 @@ export default class AppendAction implements QueryAction {
     }
 
     private findNode(key: Key): TreeNode {
-        return this.searcher.find(key)
+        return this.searcher.findOrFail(key)
     }
 }

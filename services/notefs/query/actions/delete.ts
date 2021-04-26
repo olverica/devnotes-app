@@ -25,14 +25,14 @@ export default class DeleteAction implements QueryAction {
 
     private getTargetNode(): TreeNode {
         let seacher = new NodeTreeSeacher(this.root);
-        let node = seacher.find(this.targetKey);
+        let node = seacher.findOrFail(this.targetKey);
 
         return node;
     }
 
     private getParentNode(): ParentNode {
         let seacher = new ParentTreeSeacher(this.root);
-        let node = seacher.find(this.targetKey);
+        let node = seacher.findOrFail(this.targetKey);
 
         return node;
     }

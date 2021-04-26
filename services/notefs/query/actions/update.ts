@@ -1,4 +1,3 @@
-
 import QueryAction from '~/services/notefs/query/action'
 import TreeNode, {Key} from '~/services/notefs/node'
 import TreeNodeSearcher from '~/services/notefs/searchers/node'
@@ -50,6 +49,6 @@ export default class UpdateAction implements QueryAction {
     }
     
     private findNode(key: Key): TreeNode {
-        return this.seacher.find(key)
+        return this.seacher.findOrFail(key)
     }
 }

@@ -1,4 +1,3 @@
-
 import DeleteAction from '~/services/notefs/query/actions/delete'
 import TreeNode, {ParentNode} from '~/services/notefs/node'
 

@@ -1,4 +1,3 @@
-
 import TreeSearcher from '~/services/notefs/searcher'
 import TreeNode, {ParentNode, Key} from '~/services/notefs/node'
 
@@ -11,15 +10,21 @@ export default class ParentTreeSearcher implements TreeSearcher{
         this.root = root;
     }
 
-    public find(id: Key): ParentNode {
-        let node = this.searchInNode(id, this.root)
+    public findOrFail(id: Key): ParentNode {
+        let node = this.find(id)
 
         if (node === null)
-            throw Error(`Cant find node with key ${id}`);
+            throw Error(`Cant find node with id ${id}`);
 
         return node;
     }
 
+    public find(id: Key): ParentNode|null {
+        let founded = 
+            this.searchInNode(id, this.root)
+        
+        return founded;
+    }
 
     public searchInNode(id: Key, node: TreeNode, parent: ParentNode|null = null): ParentNode|null {
         if (node.id === id)

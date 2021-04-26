@@ -1,5 +1,4 @@
-
-import ModelRepository from '~/services/model/ModelRepository'
+import ModelRepository from '~/services/models/repository'
 import DummyAPI from '~/services/api/DummyAPI'
 
 

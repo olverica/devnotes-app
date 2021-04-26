@@ -7,16 +7,16 @@
 <script lang="ts">
 import Vue from 'vue' 
 import {Component, Prop} from 'nuxt-property-decorator'
-import NavigationFile from '~/services/navigation/Folder'
+import {NoteModel} from '~/services/model/Note'
 
 
 @Component
-export default class File extends Vue {
+export default class Note extends Vue {
 
-  @Prop({type: Object, required: true }) node!: NavigationFile;
+  @Prop({type: Object, required: true }) node!: NoteModel;
 
   get name(): string  {
-    return this.node.getName();
+    return this.node.name;
   }
 }
 </script>

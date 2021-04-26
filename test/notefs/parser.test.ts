@@ -1,4 +1,3 @@
-
 import TreeParser from '~/services/notefs/parser'
 
 describe('Tree parser', () => {

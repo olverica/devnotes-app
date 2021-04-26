@@ -18,23 +18,21 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-import NavigationNode from '~/services/navigation/Node' 
-import NavigationFolder from '~/services/navigation/Folder'
 import {Component, Prop} from 'nuxt-property-decorator'
 
 
 @Component
-export default class Folder extends Vue {
+export default class Tag extends Vue {
 
-  @Prop({type: Object, required: true }) node!: NavigationFolder;
+  @Prop({type: Object, required: true }) node!: any;
 
 
   get name(): string  {
-    return this.node.getName();
+    return this.node.name
   }
 
-  get children(): NavigationNode[]  {
-    return this.node.getChildren();
+  get children(): any[]  {
+    return this.node.children
   }
 }
 </script>

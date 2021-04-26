@@ -1,4 +1,3 @@
-
 import QueryAction from '~/services/notefs/query/action'
 import NodeTreeSearcher from '~/services/notefs/searchers/node'
 import ParentTreeSearcher from '~/services/notefs/searchers/parent';
@@ -52,7 +51,7 @@ export default class AppendAction implements QueryAction {
 
     private validateTarget(target: TreeNode): void {
         let seacher = new NodeTreeSearcher(target);
-        let founded = seacher.searchInNode(this.toKey, target);
+        let founded = seacher.find(this.toKey);
 
         if (founded)
             throw Error('Cant move node it child');
@@ -78,10 +77,10 @@ export default class AppendAction implements QueryAction {
     }
 
     private findNode(key: Key): TreeNode {
-        return this.nodeSeacher.find(key);
+        return this.nodeSeacher.findOrFail(key);
     }
 
     private findNodeParent(key: Key): ParentNode {
-        return this.parentSeacher.find(key);
+        return this.parentSeacher.findOrFail(key);
     }
 }
