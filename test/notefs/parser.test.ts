@@ -1,29 +1,26 @@
-import TreeParser from '~/services/notefs/parser'
+import TreeNode from '~/services/notefs/nodes/node'
 
-describe('Tree parser', () => {
 
-    let parser = new TreeParser();
+describe('Detach action', () => {
+    
+    let rawTree = {
+        id: 0,
+        type: 'root',
+        name: 'Some project', 
+        children: [
+            {}
+        ]
+    }
 
-    test('failed to generate if node id is invalid', () => {
-        let root = {
-            id: false
-        };
-
-        let callback = () =>
-            parser.generate(root);
-
-        expect(callback).toThrow();
+    beforeEach(() => {
+      
+    });
+    
+    test('generate should return tree root', () => {
+      
     });
 
-    test('failed to generate if node children is invalid', () => {
-        let root = {
-            id: 123,
-            children: 'not an array'
-        };
-
-        let callback = () =>
-            parser.generate(root);
-
-        expect(callback).toThrow();
-    })
+    test('generate should fail tree finds invalid nodes', () => {
+       
+    });
 });

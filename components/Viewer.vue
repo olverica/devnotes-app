@@ -1,7 +1,8 @@
 <template>
   <section class="viewer">
 
-    <viwer-controls/>
+    <viewer-controls/>
+    
     <viewer-navigation/>
   
   </section>

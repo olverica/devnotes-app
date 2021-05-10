@@ -1,34 +1,27 @@
-import TreeContainer from '~/services/notefs/container'
-import TreeNode from '~/services/notefs/node'
-import NodeGuard from '~/services/notefs/guard'
+import RootValidator, {ValidatedRoot} from '~/services/notefs/parsers/validators/root'
+import RootParser from '~/services/notefs/parsers/root'
+import RootNode from '~/services/notefs/nodes/root'
 
 
 export default class TreeParser {
 
-    private guard = new NodeGuard();
+    private validator = new RootValidator();
 
-    
-    public generate(node: object): TreeContainer {
-        
-        let root = this.traverse(node);
-        let container = new TreeContainer(root);
+    private parser = new RootParser();
 
-        return container;
+
+    public generate(model: unknown): RootNode {
+        if (!!!this.validate(model))
+            throw Error('Incorrect root');
+
+        return this.convert(model)
     }
 
-    private traverse(target: object): TreeNode {
-        if (!!!this.isNode(target))
-            throw Error('Inccorect object type');
-
-        if (target.children) {
-            for (let node of target.children)
-                this.traverse(node);
-        }
-
-        return target;
+    private convert(model: ValidatedRoot) {
+        return this.parser.generate(model);
     }
 
-    private isNode(target: object): target is TreeNode {
-        return this.guard.check(target);
+    private validate(model: unknown): model is ValidatedRoot {
+        return this.validator.check(model);
     }
 }
