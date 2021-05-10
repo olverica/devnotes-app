@@ -1,49 +1,45 @@
 <template>
   <div class="navigation">
-    
+
     <explorer-navigation-node
       v-for="node in root.children"
       :key="node.id"
       :node="node"/>
 
 
-    <explorer-navigation-private/>
+    <explorer-navigation-nodes-private/>
 
-    <explorer-navigation-public/>
+    <explorer-navigation-nodes-public/>
 
-    <explorer-navigation-archive/>
+    <explorer-navigation-nodes-archive/>
 
-    <explorer-navigation-trash/>
+    <explorer-navigation-nodes-trash/>
 
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue' 
-import {Component} from 'nuxt-property-decorator'
-import TreeNode from '~/services/notefs/node' 
-import TreeContainer from '~/services/notefs/container'
- 
+import RootNode from '~/services/notefs/nodes/root'
+import ProjectContainer from '~/services/notefs/project'
+import {Component, Prop} from 'nuxt-property-decorator'
   
 @Component
 export default class Navigation extends Vue {
-  
-  private container!: TreeContainer;
 
-  private root!: TreeNode;
-  
-  beforeCreate() {
-    let root = {
-      id: 123,
-      name: 123,
-      type: 'root',
-      children: [
-        {id: 123, type: 'file', name: 'asd'}
-      ]
-    }
+  private root!: RootNode;
 
-    this.root = root;
-    console.log(123);
+  @Prop({type: Object, required: true}) container!: ProjectContainer;
+
+
+  beforeMount() {
+    this.root = this.getRoot();
+  }
+
+  getRoot(): RootNode {
+    return this.container
+      .selectRoot()
+      .get();
   }
 }
 </script>

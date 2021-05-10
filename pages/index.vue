@@ -5,7 +5,6 @@
 
     <main class="project">
       <explorer/>
-      <viewer/>
     </main>
 
   </div>

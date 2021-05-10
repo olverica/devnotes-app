@@ -14,6 +14,7 @@ export default class TagValidator extends NodeValidator<ValidatedTag> {
 
     protected checkProps(model: object): boolean {
         return this.hasChildren(model)
+            && this.hasColor(model)
             && this.hasType(model);
     }
   
@@ -32,6 +33,6 @@ export default class TagValidator extends NodeValidator<ValidatedTag> {
     private hasType(model: object) {
         let type = (model as any).type;
 
-        return type === 'folder';
+        return type === 'tag';
     }
 }

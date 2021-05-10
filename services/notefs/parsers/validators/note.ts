@@ -19,7 +19,8 @@ export default class NoteValidator extends NodeValidator<ValidatedNote> {
     private hasDescription(model: object) {
         let description = (model as any).description;
 
-        return typeof description === undefined
+
+        return typeof description === 'undefined'
             || typeof description === 'string'
     }
 

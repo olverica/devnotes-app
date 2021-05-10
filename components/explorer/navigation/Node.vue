@@ -1,14 +1,14 @@
 <template>
 
-  <explorer-navigation-file
+  <explorer-navigation-nodes-note
     v-if="isNote()"
     :node="node"/>
   
-  <explorer-navigation-tag
+  <explorer-navigation-nodes-tag
     v-else-if="isTag()"
     :node="node"/>
 
-  <explorer-navigation-folder
+  <explorer-navigation-nodes-folder
     v-else-if="isFolder()"
     :node="node"/>
 
@@ -18,7 +18,10 @@
 <script lang="ts">
 import Vue from 'vue' 
 import {Component, Prop} from 'nuxt-property-decorator'
-import TreeNode from '~/services/notefs/node' 
+import FolderNode from '~/services/notefs/nodes/folder' 
+import TreeNode from '~/services/notefs/nodes/node' 
+import NoteNode from '~/services/notefs/nodes/note' 
+import TagNode from '~/services/notefs/nodes/tag' 
 
   
 @Component
@@ -28,15 +31,15 @@ export default class Node extends Vue {
 
 
   isTag(): boolean {
-    return this.node['type'] === 'tag'
+    return this.node instanceof TagNode
   }
   
   isNote(): boolean {
-    return this.node['type'] === 'note'
+    return this.node instanceof NoteNode
   }
 
   isFolder(): boolean {
-    return this.node['type'] === 'folder'
+    return this.node instanceof FolderNode
   }
 }
 </script>

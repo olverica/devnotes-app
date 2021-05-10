@@ -1,8 +1,8 @@
 <template>
-  <div class="navigation__tag_outer">
-    
-   <explorer-navigation-title
-      type="tag"
+  <div class="navigation__folder_outer">
+
+    <explorer-navigation-title
+      type="folder"
       :name="name"/>
 
     <div class="navigation__folder_inner">
@@ -16,16 +16,16 @@
   </div>
 </template>
 
-
 <script lang="ts">
 import Vue from 'vue' 
 import {Component, Prop} from 'nuxt-property-decorator'
+import FolderNode from '~/services/notefs/nodes/folder'
 
 
 @Component
 export default class Tag extends Vue {
 
-  @Prop({type: Object, required: true }) node!: any;
+  @Prop({type: Object, required: true }) node!: FolderNode;
 
 
   get name(): string  {
