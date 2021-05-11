@@ -27,6 +27,7 @@ export default class FolderParser {
             .id(model.id)
             .name(model.name)
             .children(children)
+            .permission(model.permission)
             .build();
     }
 

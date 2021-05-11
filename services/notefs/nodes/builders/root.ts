@@ -14,8 +14,8 @@ export default class RootBuilder extends NodeBuilder<RootNode> {
     }
 
     protected cantBuild(): boolean {
-        return this.id === undefined 
-            || this.name === undefined
+        return this.$id === undefined 
+            || this.$name === undefined
     }
 
     protected create(): RootNode {

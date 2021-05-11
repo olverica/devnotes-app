@@ -11,22 +11,18 @@ export interface ValidatedNote {
 
 export default class NoteValidator extends NodeValidator<ValidatedNote> {
 
+    protected hasType(type: unknown) {
+        return type === 'note';
+    }
+
     protected checkProps(model: object): boolean {
         return this.hasDescription(model)
-            && this.hasType(model);
     }
 
     private hasDescription(model: object) {
         let description = (model as any).description;
 
-
         return typeof description === 'undefined'
             || typeof description === 'string'
-    }
-
-    private hasType(model: object) {
-        let type = (model as any).type;
-
-        return type === 'note';
     }
 }

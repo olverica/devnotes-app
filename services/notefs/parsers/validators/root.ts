@@ -1,30 +1,13 @@
-import NodeValidator from '~/services/notefs/parsers/validators/node'
-import {Key} from '~/services/notefs/nodes/node' 
+import ParentValidator from '~/services/notefs/parsers/validators/parent'
+import {ValidatedParent} from '~/services/notefs/parsers/validators/parent'
 
 
-export interface ValidatedRoot {
-    id: Key;
-    name: string;
-    children: [];
-}
+export type ValidatedRoot = ValidatedParent 
 
 
-export default class RootValidator extends NodeValidator<ValidatedRoot> {
+export default class RootValidator extends ParentValidator<ValidatedRoot> {
   
-    protected checkProps(model: object): boolean {
-        return this.hasChildren(model)
-            && this.hasType(model);
-    }
-  
-    private hasChildren(model: object) {
-        let children = (model as any).children;
-
-        return Array.isArray(children); 
-    }
-
-    private hasType(model: object) {
-        let type = (model as any).type;
-
+    protected hasType(type: unknown) {
         return type === 'root';
     }
 }

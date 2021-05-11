@@ -55,7 +55,7 @@ export default class Navigation extends Vue {
       id: 0, type: 'root', name: 'some',
       children: [
         {
-          id: 1, type: 'folder', name: 'some',
+          id: 1, type: 'folder', name: 'some', permission: 'protected',
           children: [
             {
               id: 2, color: 'asdas', type: 'tag', name: 'some',
@@ -67,7 +67,9 @@ export default class Navigation extends Vue {
             {id: 5, type: 'note', name: 'some'}
           ]
         },
-        {id: 6, type: 'note', name: 'some'}
+        {id: 6, type: 'folder', name: 'some', permission: 'private', children: []},
+        {id: 7, type: 'folder', name: 'some', permission: 'public', children: []},
+        {id: 8, type: 'note', name: 'some'}
       ]
     }
   }

@@ -1,11 +1,10 @@
-import NoteValidator, {ValidatedNote} from '~/services/notefs/parsers/validators/note'
 import FolderValidator, {ValidatedFolder} from '~/services/notefs/parsers/validators/folder'
+import NoteValidator, {ValidatedNote} from '~/services/notefs/parsers/validators/note'
 import RootNode, {RootChild} from '~/services/notefs/nodes/root'
 import {ValidatedRoot} from '~/services/notefs/parsers/validators/root'
-import NoteParser from '~/services/notefs/parsers/note'
 import FolderParser from '~/services/notefs/parsers/folder'
+import NoteParser from '~/services/notefs/parsers/note'
 import Builder from '~/services/notefs/builder'
-
 
 
 export default class RootParser {
@@ -30,7 +29,7 @@ export default class RootParser {
             .build();
     }
 
-    private createChildren(model: ValidatedFolder): RootChild[]  {
+    private createChildren(model: ValidatedRoot): RootChild[]  {
         let children: RootChild[] = [];
 
         for (let child of model.children) {

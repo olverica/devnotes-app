@@ -21,9 +21,9 @@ export default class TagBuilder extends NodeBuilder<TagNode> {
     }
 
     protected cantBuild(): boolean {
-        return this.id === undefined 
-            || this.name === undefined
-            || this.color === undefined;
+        return this.$id === undefined 
+            || this.$name === undefined
+            || this.$color === undefined;
     }
 
     protected create(): TagNode {

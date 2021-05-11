@@ -6,11 +6,6 @@
       :key="node.id"
       :node="node"/>
 
-
-    <explorer-navigation-nodes-private/>
-
-    <explorer-navigation-nodes-public/>
-
     <explorer-navigation-nodes-archive/>
 
     <explorer-navigation-nodes-trash/>

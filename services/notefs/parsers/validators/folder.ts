@@ -1,30 +1,29 @@
-import NodeValidator from '~/services/notefs/parsers/validators/node'
-import {Key} from '~/services/notefs/nodes/node' 
+import {FolderPermission} from '~/services/notefs/nodes/folder'
+import {ValidationTarget} from '~/services/notefs/parsers/validators/node'
+import {ValidatedParent} from '~/services/notefs/parsers/validators/parent'
+import ParentValidator from '~/services/notefs/parsers/validators/parent'
 
 
-export interface ValidatedFolder {
-    id: Key;
-    name: string;
-    children: unknown[]
-}
+export interface ValidatedFolder extends ValidatedParent {
+    permission: FolderPermission
+} 
 
 
-export default class FolderValidator extends NodeValidator<ValidatedFolder> {
-
-    protected checkProps(model: object): boolean {
-        return this.hasChildren(model)
-            && this.hasType(model);
-    }
+export default class FolderValidator extends ParentValidator<ValidatedFolder> {
   
-    private hasChildren(model: object) {
-        let children = (model as any).children;
-
-        return Array.isArray(children); 
+    protected hasType(type: unknown) {
+        return type === 'folder';
     }
 
-    private hasType(model: object) {
-        let type = (model as any).type;
+    protected checkProps(model: ValidationTarget): boolean {
+        let {permission} = model;
 
-        return type === 'folder';
+        return this.hasPermission(permission);
+    }
+
+    private hasPermission(permission: unknown) {
+        return permission === FolderPermission.Protected
+            || permission === FolderPermission.Private
+            || permission === FolderPermission.Public;
     }
 }

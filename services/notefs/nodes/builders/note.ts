@@ -14,8 +14,8 @@ export default class NoteBuilder extends NodeBuilder<NoteNode> {
     }
 
     protected cantBuild(): boolean {
-        return this.id === undefined 
-            || this.name === undefined
+        return this.$id === undefined 
+            || this.$name === undefined
     }
 
     protected create(): NoteNode {

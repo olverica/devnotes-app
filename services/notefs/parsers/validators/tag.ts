@@ -1,6 +1,6 @@
-import NodeValidator from '~/services/notefs/parsers/validators/node'
+import {ValidationTarget} from '~/services/notefs/parsers/validators/node'
+import ParentValidator from '~/services/notefs/parsers/validators/parent'
 import {Key} from '~/services/notefs/nodes/node' 
-
 
 export interface ValidatedTag {
     id: Key;
@@ -10,29 +10,19 @@ export interface ValidatedTag {
 }
 
 
-export default class TagValidator extends NodeValidator<ValidatedTag> {
+export default class TagValidator extends ParentValidator<ValidatedTag> {
 
-    protected checkProps(model: object): boolean {
-        return this.hasChildren(model)
-            && this.hasColor(model)
-            && this.hasType(model);
+    protected checkProps(model: ValidationTarget): boolean {
+        let {color} = model;
+
+        return this.hasColor(color);
     }
   
-    private hasChildren(model: object) {
-        let children = (model as any).children;
-
-        return Array.isArray(children); 
+    private hasColor(color: unknown) {
+        return typeof color === 'string';
     }
 
-    private hasColor(model: object) {
-        let type = (model as any).type;
-
-        return typeof type === 'string';
-    }
-
-    private hasType(model: object) {
-        let type = (model as any).type;
-
+    protected hasType(type: unknown) {
         return type === 'tag';
     }
 }
