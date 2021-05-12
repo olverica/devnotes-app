@@ -22,19 +22,12 @@ import {Component, Prop} from 'nuxt-property-decorator'
 @Component
 export default class Navigation extends Vue {
 
-  private root!: RootNode;
+  @Prop({type: Object, required: true}) project!: ProjectContainer;
 
-  @Prop({type: Object, required: true}) container!: ProjectContainer;
-
-
-  beforeMount() {
-    this.root = this.getRoot();
-  }
-
-  getRoot(): RootNode {
-    return this.container
-      .selectRoot()
-      .get();
+  get root(): RootNode {
+    return this.project
+        .selectRoot()
+        .get();
   }
 }
 </script>

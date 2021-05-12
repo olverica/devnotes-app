@@ -17,7 +17,7 @@ import {Component, Prop} from 'nuxt-property-decorator'
 
 
 @Component
-export default class Folder extends Vue {
+export default class Title extends Vue {
 
   @Prop({type: String, default:'' }) name!: string;
 

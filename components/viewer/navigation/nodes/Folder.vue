@@ -1,20 +1,10 @@
 <template>
-  <div class="navigation__folder_outer">
-
-    <explorer-navigation-title
-      :type="type"
-      :name="name"/>
-
-    <div class="navigation__folder_inner">
-
-      <explorer-navigation-node
-        v-for="(node, index) of children"
-        :key="index"
-        :node="node"/>
-
-    </div>
-  </div>
+  <viewer-navigation-card
+    type="folder"
+    :name="name"/>
 </template>
+
+
 
 <script lang="ts">
 import Vue from 'vue' 
@@ -30,10 +20,6 @@ export default class Folder extends Vue {
 
   get name(): string  {
     return this.node.name
-  }
-
-  get children(): any[]  {
-    return this.node.children
   }
 
   get type():string {

@@ -1,15 +1,15 @@
 <template>
-  <aside class="explorer">
+  <section class="viewer">
 
-    <explorer-controls/>
-
+    <viewer-controls/>
+    
     <client-only>
-      <explorer-navigation
+      <viewer-navigation
         v-if="loaded"
         :project="project"/>
     </client-only>
 
-  </aside>
+  </section>
 </template>
 
 <script lang="ts">
@@ -18,7 +18,7 @@ import ProjectContainer from '~/services/notefs/project'
 import {Component, InjectReactive} from 'nuxt-property-decorator'
   
 @Component
-export default class Explorer extends Vue {
+export default class Viewer extends Vue {
 
   @InjectReactive() project?: ProjectContainer|null;
  
