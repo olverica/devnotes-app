@@ -15,11 +15,12 @@
 
 <script lang="ts">
 import Vue from 'vue' 
+import {ref} from '@nuxtjs/composition-api'
 import TreeNode from '~/services/notefs/nodes/node'
 import TreeParser from '~/services/notefs/parser'
+import TreeCursor from '~/services/cursor'
 import ProjectContainer from '~/services/notefs/project'
 import {Component, ProvideReactive} from 'nuxt-property-decorator'
-import {ref} from '@nuxtjs/composition-api'
 
 
 @Component
@@ -27,17 +28,28 @@ export default class IndexPage extends Vue {
   
   @ProvideReactive() project!: ProjectContainer;
 
+  @ProvideReactive() cursor!: TreeCursor;
+
 
   beforeMount() {
     this.project = this.createContainer();
-
-    (window as any).set = () => {
-      this.$set((this.project as any).tree.children[0], 'name', 123);
-    }
+    this.cursor = this.creteCursor();
   }
 
 
- createContainer() {
+  creteCursor() {
+    let cursor = new TreeCursor();
+    let root = this.project
+      .selectRoot()
+      .get()
+
+    cursor.select(root);
+    ref(cursor);
+
+    return cursor;
+  }
+
+  createContainer() {
     let tree = this.createTree();
     let root = this.parseTree(tree);
     let container = new ProjectContainer(root);
@@ -78,69 +90,4 @@ export default class IndexPage extends Vue {
     }
   }
 };
-/* import Vue from 'vue' 
-import TreeNode from '~/services/notefs/nodes/node'
-import TreeParser from '~/services/notefs/parser'
-import ProjectContainer from '~/services/notefs/project'
-
-
-
-export default Vue.extend({
-  provide(): any {
-    return {
-      $project: this.project
-    }
-  },
-
-  data() {
-    return {
-      project: {} as ProjectContainer
-    }
-  },
-
-  beforeMount() {
-    this.project = this.createContainer();
-  },
-
-  methods: {
-    createContainer() {
-      let tree = this.createTree();
-      let root = this.parseTree(tree);
-      let container = new ProjectContainer(root);
-
-      return container;
-    },
-    
-    parseTree(tree: TreeNode) {
-      let parser = new TreeParser();
-      let root = parser.generate(tree);
-
-      return root;
-    },
-
-    createTree() {
-      return {
-        id: 0, type: 'root', name: 'some',
-        children: [
-          {
-            id: 1, type: 'folder', name: 'some', permission: 'protected',
-            children: [
-              {
-                id: 2, color: 'asdas', type: 'tag', name: 'some',
-                children: [
-                  {id: 3, type: 'note', name: 'some'},
-                  {id: 4, type: 'note', name: 'some'}
-                ]
-              },
-              {id: 5, type: 'note', name: 'some'}
-            ]
-          },
-          {id: 6, type: 'folder', name: 'some', permission: 'private', children: []},
-          {id: 7, type: 'folder', name: 'some', permission: 'public', children: []},
-          {id: 8, type: 'note', name: 'some'}
-        ]
-      }
-    }
-  }
-}); */
 </script>

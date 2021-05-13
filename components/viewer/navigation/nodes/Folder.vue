@@ -1,19 +1,23 @@
 <template>
   <viewer-navigation-card
-    type="folder"
-    :name="name"/>
+    :type="type"
+    :name="name"
+    @click.native="select"/>
 </template>
 
 
 
 <script lang="ts">
 import Vue from 'vue' 
-import {Component, Prop} from 'nuxt-property-decorator'
+import TreeCursor from '~/services/cursor'
+import {Component, Prop, InjectReactive} from 'nuxt-property-decorator'
 import FolderNode, {FolderPermission as Permission}  from '~/services/notefs/nodes/folder'
 
 
 @Component
 export default class Folder extends Vue {
+
+  @InjectReactive() cursor!: TreeCursor;
 
   @Prop({type: Object, required: true }) node!: FolderNode;
 
@@ -35,6 +39,10 @@ export default class Folder extends Vue {
       case Permission.Public:
           return 'customer';
     }
+  }
+  
+  select() {
+    this.cursor.select(this.node);
   }
 }
 </script>

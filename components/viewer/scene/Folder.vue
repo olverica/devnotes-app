@@ -12,52 +12,29 @@
 
 
 <script lang="ts">
-import Vue from 'vue' 
-import TagNode from '~/services/notefs/nodes/tag'
 import TreeNode from '~/services/notefs/nodes/node'
-import NoteNode from '~/services/notefs/nodes/note'
 import FolderNode from '~/services/notefs/nodes/folder'
-import {Component, Prop} from 'nuxt-property-decorator'
- 
+import {isNote, isTag} from '~/services/notefs/guards'
+import TreeNodeSplitter from '~/mixins/tree-node-splitter'
+import {Component, Prop, mixins} from 'nuxt-property-decorator'
 
 @Component
-export default class FolderScene extends Vue {
+export default class FolderScene extends mixins(TreeNodeSplitter) {
   
   @Prop({type: Object}) node!: FolderNode
 
   get tags(): TreeNode[] {
-    let validator = this.isTag;
-    let nodes = this.sliceNodes(validator)
+    let nodes = this.node.children;
+    let validator = isTag;
 
-    return nodes;
+    return this.sliceNodes(nodes, validator)
   }
 
   get notes(): TreeNode[]  {
-    let validator = this.isNote;
-    let nodes = this.sliceNodes(validator);
+    let nodes = this.node.children;
+    let validator = isNote;
 
-    return nodes;
-  }
-
-
-  isNote(node: TreeNode) {
-    return node instanceof NoteNode;
-  }
-
-  isTag(node: TreeNode) {
-    return node instanceof TagNode;
-  }
-  
-  sliceNodes(validator: (node: TreeNode) => boolean) {
-    let nodes: TreeNode[] = [];
-    let children = this.node.children;
-
-      for (let node of children) {
-        if (validator(node))
-          nodes.push(node);
-      }
-
-    return nodes;
+    return this.sliceNodes(nodes, validator);
   }
 }
 </script>

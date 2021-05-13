@@ -17,13 +17,11 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-import {Component, Prop} from 'nuxt-property-decorator'
-import FolderNode from '~/services/notefs/nodes/folder' 
 import TreeNode from '~/services/notefs/nodes/node' 
-import NoteNode from '~/services/notefs/nodes/note' 
-import TagNode from '~/services/notefs/nodes/tag' 
-
+import {Component, Prop} from 'nuxt-property-decorator'
+import {isNote, isFolder, isTag} from '~/services/notefs/guards'
   
+
 @Component
 export default class Node extends Vue {
 
@@ -31,15 +29,15 @@ export default class Node extends Vue {
 
 
   isTag(): boolean {
-    return this.node instanceof TagNode
+    return isTag(this.node);
   }
   
   isNote(): boolean {
-    return this.node instanceof NoteNode
+    return isNote(this.node);
   }
 
   isFolder(): boolean {
-    return this.node instanceof FolderNode
+    return isFolder(this.node);
   }
 }
 </script>
