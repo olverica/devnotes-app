@@ -1,12 +1,13 @@
 <template>
   <div class="viewer__area">
-    <viewer-scene-section-notes
-      :notes="notes"/>
+    <viewer-navigation-section
+      :nodes="notes"/>
 
-    <viewer-scene-section-tag
+    <viewer-navigation-section
       v-for="tag in tags"
       :key="tag.id"
-      :tag="tag"/>
+      :title="tag.title"
+      :nodes="tag.children"/>
   </div>
 </template>
 
@@ -18,10 +19,11 @@ import {isNote, isTag} from '~/services/notefs/guards'
 import TreeNodeSplitter from '~/mixins/tree-node-splitter'
 import {Component, Prop, mixins} from 'nuxt-property-decorator'
 
+
 @Component
-export default class FolderScene extends mixins(TreeNodeSplitter) {
+export default class FolderNavigation extends mixins(TreeNodeSplitter) {
   
-  @Prop({type: Object}) node!: FolderNode
+  @Prop({type: Object, required: true}) node!: FolderNode
 
   get tags(): TreeNode[] {
     let nodes = this.node.children;

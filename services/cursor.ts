@@ -1,5 +1,5 @@
 
-export default class TreeCursor<T = unknown> {
+export default class Cursor<T = unknown> {
     
     private history: T[] = [];
     

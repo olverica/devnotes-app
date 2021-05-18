@@ -1,7 +1,7 @@
 import TreeNode, {Key} from '~/services/notefs/nodes/node'
 
 
-export default abstract class ParentNode<ChildNode extends TreeNode> implements TreeNode {
+export default abstract class ParentNode<ChildNode extends TreeNode = TreeNode> implements TreeNode {
 
     public id: Key;
 

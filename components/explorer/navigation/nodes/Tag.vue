@@ -1,19 +1,7 @@
 <template>
-  <div class="navigation__tag_outer">
-    
-   <explorer-navigation-title
-      type="tag"
-      :name="name"/>
-
-    <div class="navigation__folder_inner">
-
-      <explorer-navigation-node
-        v-for="(node, index) of children"
-        :key="index"
-        :node="node"/>
-
-    </div>
-  </div>
+    <explorer-navigation-nodes-parent
+    :node="node"
+    type="tag"/>
 </template>
 
 
@@ -26,15 +14,6 @@ import {Component, Prop} from 'nuxt-property-decorator'
 @Component
 export default class Tag extends Vue {
 
-  @Prop({type: Object, required: true }) node!: TagNode;
-
-
-  get name(): string  {
-    return this.node.name
-  }
-
-  get children(): any[]  {
-    return this.node.children
-  }
+  @Prop({type: Object, required: true}) node!: TagNode;
 }
 </script>

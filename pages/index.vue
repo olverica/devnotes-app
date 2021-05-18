@@ -16,9 +16,9 @@
 <script lang="ts">
 import Vue from 'vue' 
 import {ref} from '@nuxtjs/composition-api'
+import Cursor from '~/services/cursor'
 import TreeNode from '~/services/notefs/nodes/node'
 import TreeParser from '~/services/notefs/parser'
-import TreeCursor from '~/services/cursor'
 import ProjectContainer from '~/services/notefs/project'
 import {Component, ProvideReactive} from 'nuxt-property-decorator'
 
@@ -28,22 +28,26 @@ export default class IndexPage extends Vue {
   
   @ProvideReactive() project!: ProjectContainer;
 
-  @ProvideReactive() cursor!: TreeCursor;
+  @ProvideReactive() cursor!: Cursor;
 
 
   beforeMount() {
     this.project = this.createContainer();
     this.cursor = this.creteCursor();
+
+    this.selectRoot();
   }
 
-
-  creteCursor() {
-    let cursor = new TreeCursor();
+  selectRoot() {
     let root = this.project
       .selectRoot()
-      .get()
+      .get();
 
-    cursor.select(root);
+    this.cursor.select(root);
+  }
+
+  creteCursor() {
+    let cursor = new Cursor();
     ref(cursor);
 
     return cursor;
@@ -65,6 +69,7 @@ export default class IndexPage extends Vue {
 
     return root;
   }
+
 
   createTree() {
     return {

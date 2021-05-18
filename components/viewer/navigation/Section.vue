@@ -23,7 +23,7 @@ import {Component, Prop} from 'nuxt-property-decorator'
  
 
 @Component
-export default class FolderSection extends Vue {
+export default class Section extends Vue {
   
   @Prop({type: Array}) nodes!: TreeNode[];
 
