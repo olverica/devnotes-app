@@ -1,10 +1,10 @@
 <template>
   <div class="viewer__area">
-    <viewer-scene-section-root-folders
-      :folders="folders"/>
+    <viewer-navigation-section
+      :nodes="folders"/>
 
-    <viewer-scene-section-notes
-      :notes="notes"/>
+    <viewer-navigation-section
+      :nodes="notes"/>
   </div>
 </template>
 
@@ -18,9 +18,9 @@ import {Component, Prop, mixins} from 'nuxt-property-decorator'
   
 
 @Component
-export default class RootScene extends mixins(TreeNodeSplitter) {
+export default class RootNavigation extends mixins(TreeNodeSplitter) {
 
-  @Prop({type: Object}) node!: FolderNode;
+  @Prop({type: Object, required: true}) node!: FolderNode;
 
 
   get folders(): TreeNode[] {

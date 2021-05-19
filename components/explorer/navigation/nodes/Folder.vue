@@ -1,19 +1,7 @@
 <template>
-  <div class="navigation__folder_outer">
-
-    <explorer-navigation-title
-      :type="type"
-      :name="name"/>
-
-    <div class="navigation__folder_inner">
-
-      <explorer-navigation-node
-        v-for="(node, index) of children"
-        :key="index"
-        :node="node"/>
-
-    </div>
-  </div>
+  <explorer-navigation-nodes-parent
+    :node="node"
+    :type="type"/>
 </template>
 
 <script lang="ts">
@@ -27,14 +15,6 @@ export default class Folder extends Vue {
 
   @Prop({type: Object, required: true }) node!: FolderNode;
 
-
-  get name(): string  {
-    return this.node.name
-  }
-
-  get children(): any[]  {
-    return this.node.children
-  }
 
   get type():string {
     let {permission} = this.node;
