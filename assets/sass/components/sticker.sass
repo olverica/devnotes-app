@@ -1,33 +1,34 @@
 .sticker
-  min-width: 1.4rem
-  height: 1.4rem
-  border-radius: 1.4rem
+  min-width: 14px
+  max-width: 14px
+  height: 14px
+  border-radius: 14px
   // flex
   display: flex
   align-items: center
   justify-content: center
   // font
   @include ol-icons
-  font-size: .8rem
+  font-size: $text-tiny-size
   color: $color-white
 
 .sticker--counted
-  background: #E5342E
+  background: $color-ui-red
   box-sizing: content-box
   // font
   font-family: 'Roboto Mono', monospace
-  font-size: .9rem
+  font-size: $text-tiny-size
   padding: 0 4.3px
   min-width: fit-content
-  font-weight: $medium
+  font-weight: $weight-regular
 
 .sticker--opened
-  background: $color-white
+  background: $color-ui-white
   // font
   color: $color-dark-8
 
 .sticker--updated
-  background: #E5B745
-  
+  background: $color-ui-yellow
+
 .sticker--created
-  background: #29CC7A
+  background: $color-ui-green

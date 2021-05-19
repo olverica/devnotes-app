@@ -5,8 +5,8 @@
   padding: 0 10px
   // font
   overflow: hidden
-  font-size: 1.6rem
-  color: $color-gray-60
+  font-size: $text-huge-size
+  color: $color-text-lightgray
   // flex
   display: flex
   align-items: center
@@ -20,7 +20,7 @@
   // 
   &::before
     @include ol-icons
-    font-size: 1.8rem
+    font-size: $text-huge-size + 2px
 
 
 .navigation__item_name
@@ -32,7 +32,7 @@
 
 .navigation__item.navigation__item--opened,
 .navigation__item.navigation__item:hover
-  color: $color-white
+  color: $color-text-white
 
 // ==========
 // item types
@@ -43,42 +43,42 @@
   .navigation__item_icon
     &::before
       content: "file"
-      color: #7A96CC
+      color: $color-file
 
 
 .navigation__item--folder
   .navigation__item_icon
     &::before
       content: "folder"
-      color: #E5B745
+      color: $color-folder
 
 
 .navigation__item--developers
   .navigation__item_icon
     &::before
       content: "developers"
-      color: #8256BF
+      color: $color-folder-private
 
 
 .navigation__item--customer
   .navigation__item_icon
     &::before
       content: "customer"
-      color: #0D6380
+      color: $color-folder-public
 
 
 .navigation__item--archive
   .navigation__item_icon
     &::before
       content: "archive"
-      color: #E57A45
+      color: $color-folder-archive
 
 
 .navigation__item--trash
   .navigation__item_icon
     &::before
       content: "trash"
-      color: #E5342E
+      color: $color-folder-trash
 
 
 .navigation__item--folder,
@@ -90,7 +90,7 @@
   &::before
     @include ol-icons
     content: "chevron"
-    font-size: .8rem
+    font-size: $text-tiny-size
     transform: rotate(-90deg)
     transition: transform .2s
 
@@ -99,13 +99,13 @@
   min-height: 30px
   max-height: 30px
   padding: 0 10px
-  border-radius: 10px
-  font-weight: $regular
+  border-radius: $radius-small-size
+  font-weight: $weight-medium
   // 
   &::after
     @include ol-icons
     content: "chevron"
-    font-size: .8rem
+    font-size: $text-tiny-size
     transform: rotate(90deg)
     transition: transform .2s, color .2s
   // 

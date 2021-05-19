@@ -1,7 +1,7 @@
 .explorer
   width: 250px
   height: 100vh
-  background: $color-dark-8
+  background: $color-ui-dark
   position: sticky
   top: 0
   padding: 40px 20px
@@ -13,7 +13,7 @@
 
 .navigation
   overflow: auto  
-  @include scroll-secondary($color-dark-12, $color-dark-14)
+  @include scroll-secondary($color-ui-lightgray, lighten($color-ui-lightgray, 2))
 
 .navigation,
 .navigation__folder_outer,
@@ -31,8 +31,43 @@
     &::before
       font-family: "ol-icons"
       content: "dot"
-      font-size: .8rem
+      font-size: $text-tiny-size
       transition: color .2s
+
+  
+.explorer__dropdown
+  width: 100%
+  height: 40px
+  color: $color-text-white
+  position: relative
+  cursor: pointer
+  // grid
+  display: grid
+  grid-template-columns: max-content 1fr max-content
+  grid-auto-rows: max-content
+  align-items: center
+  align-content: center
+  gap: 10px
+  // dropdown arrow
+  &::after
+    @include ol-icons
+    content: "chevron"
+    font-size: $text-tiny-size
+    transition: transform .2s
+  // active state
+  &--active
+    &::after
+      transform: rotate(180deg)
+
+
+.explorer__dropdown_icon
+  @include ol-icons
+  font-size: $heading-small-size + 2px
+
+
+.explorer__dropdown_header
+  @include text-overflow
+  font-size: $heading-small-size
   
 // ===============
 // import elements

@@ -1,0 +1,48 @@
+.message
+  width: 100%
+  height: max-content
+  padding: 10px
+  border-radius: $radius-large-size
+  border-bottom-right-radius: $radius-small-size
+  background: $color-ui-whitesmoke
+  // flex
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+.message__body
+  width: 100%
+  height: max-content
+  padding: 20px
+  background: $color-ui-white
+  border-radius: $radius-medium-size
+
+.message__footer
+  padding: 0 10px
+  // flex
+  display: flex
+  justify-content: space-between
+
+.message__controls
+  display: flex
+  gap: 20px
+
+.message__type,
+.message__attach
+  height: 20px
+  font-size: $text-medium-size
+  color: $color-text-lightgray
+  // flex
+  display: flex
+  align-items: center
+  gap: 6px
+
+.message__statuses
+  display: flex
+  gap: 20px
+  // 
+  .status
+    height: 20px
+    padding: 0
+    background: transparent
+    color: $color-text-lightgray

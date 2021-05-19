@@ -1,13 +1,17 @@
 .viewer
   padding: 40px
+  background: $color-ui-white
+  // grid
   display: grid
   grid-template-areas: "controls" "area"
   grid-template-columns: 1fr
   grid-template-rows: max-content 1fr
   grid-row-gap: 40px
 
+  
 .viewer__controls
   grid-area: controls
+
 
 .viewer__area
   grid-area: area
@@ -15,6 +19,7 @@
   display: flex
   flex-direction: column
   gap: 40px
+
 
 .viewer__section
   display: grid
@@ -27,17 +32,18 @@
   height: 40px
   display: flex
   align-items: center
-  border-radius: 10px
-  background: $color-white-96
-  color: $color-gray-20
+  border-radius: $radius-small-size
+  background: $color-ui-whitesmoke
+  color: $color-text-dark
 
 .viewer__button
   min-width: 40px
   justify-content: center
   // 
   .ol-icons
-    font-size: 1.8rem
+    font-size: $heading-small-size
 
+  
 @import viewer_controls
 @import viewer_title
 @import viewer_card
