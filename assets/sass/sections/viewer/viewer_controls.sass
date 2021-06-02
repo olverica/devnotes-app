@@ -27,16 +27,56 @@
   height: 40px
   min-width: max-content
   padding: 0 20px
-  border-radius: 10px
-  font-size: 16px
+  border-radius: $radius-small-size
+  font-size: $text-huge-size
   // flex 
   display: flex
   gap: 10px
   align-items: center
   justify-content: center
-  background: transparentize(#000, 0.8)
+  background: $color-ui-whitesmoke
   // 
   &::before
     @include ol-icons
     content: "tag"
-    font-size: 18px    
+    font-size: $text-huge-size + 2px   
+
+
+.viewer__dropdown
+  width: max-content
+  max-width: 260px
+  height: 40px
+  padding: 0 20px
+  color: $color-text-dark
+  background: $color-ui-whitesmoke
+  border-radius: $radius-small-size
+  position: relative
+  cursor: pointer
+  // grid 
+  display: grid
+  grid-template-columns: max-content 1fr max-content
+  align-items: center
+  gap: 10px
+  // dropdown arrow
+  &:after
+    @include ol-icons
+    content: "chevron"
+    font-size: $text-tiny-size
+    transition: transform .2s
+  // active state
+  &--active
+    &:after
+      transform: rotate(180deg)
+  // folder dropdown
+  &--folder
+    .viewer__dropdown_icon
+      color: $color-folder
+
+.viewer__dropdown_icon
+  @include ol-icons
+  font-size: $text-huge-size + 2px
+
+
+.viewer__dropdown_header
+  @include text-overflow
+  font-size: $text-huge-size

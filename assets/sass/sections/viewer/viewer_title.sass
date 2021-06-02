@@ -1,7 +1,7 @@
 .viewer__title
-  font-weight: $semibold
-  color: $color-gray-20
-  font-size: 28px
+  font-weight: $weight-semibold
+  color: $color-text-gray
+  font-size: $heading-large-size
   height: 30px
   line-height: 1
   // flex
@@ -22,9 +22,9 @@
 .viewer__title--folder
   &::before
     content: "folder"
-    color: #e5b045
+    color: $color-folder
 
 .viewer__title--files
   &::before
     content: "files"
-    color: #7a96cc
+    color: $color-file

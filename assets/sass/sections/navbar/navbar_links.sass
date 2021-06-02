@@ -16,13 +16,14 @@
     &::after
       @include ol-icons
       content: "pin"
-      font-size: 1.4rem
+      font-size: $text-large-size
   // 
-  @include scroll-secondary($color-dark-10, $color-dark-12)
+  @include scroll-secondary($color-ui-dark, $color-ui-gray)
+
 
 .navbar__separator
   height: 2px
-  background: $color-dark-8
+  background: $color-ui-dark
   margin: 20px 0 
   // grid
   grid-area: separator
@@ -31,9 +32,9 @@
 .navbar__link
   height: 40px
   padding: 0 15px
-  border-radius: 10px
-  font-size: 1.6rem
-  color: $color-gray-60
+  border-radius: $radius-small-size
+  font-size: $text-huge-size
+  color: $color-text-lightgray
   overflow: hidden
   // flex
   display: flex
@@ -41,25 +42,22 @@
   column-gap: 10px
   // 
   &:hover
-    background: $color-dark-8
+    background: $color-ui-dark
   // 
   &:active
     transform: scale(0.99)
 
 
 .navbar__link--active
-  background: $color-white
-  color: $color-dark-6
+  background: $color-ui-white
+  color: $color-text-black
   // 
   &:hover
-    background: $color-white
-
-
-
+    background: $color-ui-white
 
 
 .navbar__link_icon
-  font-size: 18px
+  font-size: $text-huge-size + 2
 
 
 .navbar__link_name
