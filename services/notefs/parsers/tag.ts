@@ -1,54 +1,30 @@
-import NoteValidator, {ValidatedNote} from '~/services/notefs/parsers/validators/note'
-import {ValidatedTag} from '~/services/notefs/parsers/validators/tag'
+import TagValidator, {ValidatedTag} from '~/services/notefs/parsers/validators/tag'
+import TagNode, {TagChild} from '~/services/notefs/nodes/tag'
+import ParentParser from '~/services/notefs/parsers/parent'
 import NoteParser from '~/services/notefs/parsers/note'
-import TagNote, {TagChild} from '~/services/notefs/nodes/tag'
 import Builder from '~/services/notefs/builder'
 
 
-export default class TagParser {
+export default class TagParser extends ParentParser<TagNode, ValidatedTag, TagChild> {
     
-    private noteValidator = new NoteValidator();
+    protected childParsers = [
+        new NoteParser()
+    ]
 
-    private noteParser = new NoteParser();
 
+    protected validate(model: unknown): model is ValidatedTag {
+        let validator = new TagValidator();
+        
+        return validator.check(model);
+    }
 
-    public generate(model: ValidatedTag): TagNote {
-        let children = 
-            this.createChildren(model);
-
+    protected createParent(model: ValidatedTag): TagNode {
+        let {id, name, color} = model;
+       
         return Builder.tag()
-            .id(model.id)
-            .name(model.name)
-            .color(model.color)
-            .children(children)
+            .id(id)
+            .name(name)
+            .color(color)
             .build();
-    }
-
-    private createChildren(model: ValidatedTag): TagChild[]  {
-        let children: TagChild[] = [];
-
-        for (let child of model.children) {
-            let node = 
-                this.createChild(child);
-            
-            children.push(node);
-        }
-
-        return children;
-    }
-
-    private createChild(model: unknown): TagChild {
-        if (this.isNote(model))
-            return this.createNote(model);
-
-        throw Error('Incorrect child type');
-    }
-
-    private isNote(model: unknown): model is ValidatedNote {
-        return this.noteValidator.check(model);
-    }
-
-    private createNote(model: ValidatedNote) {
-        return this.noteParser.generate(model);
     }
 }

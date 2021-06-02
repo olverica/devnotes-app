@@ -1,5 +1,4 @@
 <template>
-
   <viewer-navigation-nodes-note
     v-if="isNote"
     :node="node"/>
@@ -7,7 +6,6 @@
   <viewer-navigation-nodes-folder
     v-else-if="isFolder"
     :node="node"/>
-
 </template>
 
 <script lang="ts">
@@ -19,7 +17,6 @@ import {Component, Prop } from 'nuxt-property-decorator'
   
 @Component
 export default class Node extends Vue {
-
 
   @Prop({type: Object, required: true}) node!: TreeNode;
 

@@ -14,14 +14,16 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-import ProjectContainer from '~/services/notefs/project'
-import {Component, InjectReactive} from 'nuxt-property-decorator'
+import Project from '~/services/notefs/nodes/project'
+import {Component, Prop} from 'nuxt-property-decorator'
   
 @Component
 export default class Explorer extends Vue {
 
-  @InjectReactive() project?: ProjectContainer|null;
+  @Prop({type: Object}) 
+  private project!: Project|null;
  
+
   get loaded(): boolean {
     return Boolean(this.project);
   }

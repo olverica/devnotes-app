@@ -2,7 +2,7 @@
   <div class="navigation">
 
     <explorer-navigation-node
-      v-for="node in folders"
+      v-for="node in sorted"
       :key="node.id"
       :node="node"/>
 
@@ -12,7 +12,7 @@
 
 
     <explorer-navigation-node
-        v-for="node in notes"
+        v-for="node in []"
         :key="node.id"
         :node="node"/>
 
@@ -20,38 +20,27 @@
 </template>
 
 <script lang="ts">
-import RootNode from '~/services/notefs/nodes/root'
-import TreeNode from '~/services/notefs/nodes/node'
-import ProjectContainer from '~/services/notefs/project'
-import TreeNodeSplitter from '~/mixins/tree-node-splitter'
-import {isNote, isFolder} from '~/services/notefs/guards'
+import Project from '~/services/notefs/nodes/project'
+import RootNode, {RootChild} from '~/services/notefs/nodes/root'
+import TreeNodeSorter from '~/mixins/tree-node-sorter'
 import {Component, Prop, mixins} from 'nuxt-property-decorator'
 
-  
+
 @Component
-export default class Navigation extends mixins(TreeNodeSplitter) {
+export default class Navigation extends mixins(TreeNodeSorter) {
 
-  @Prop({type: Object, required: true}) project!: ProjectContainer;
+  @Prop({type: Object, required: true}) 
+  private project!: Project;
 
 
-  get folders(): TreeNode[] {
-    let validator = isFolder;
+  get sorted(): RootChild[] {
     let nodes = this.root.children;
 
-    return this.sliceNodes(nodes, validator);
-  }
-
-  get notes(): TreeNode[]  {
-    let validator = isNote;
-    let nodes = this.root.children;
-
-    return this.sliceNodes(nodes, validator);;
+    return this.sort(nodes)
   }
 
   get root(): RootNode {
-    return this.project
-        .selectRoot()
-        .get();
+    return this.project.root;
   }
 }
 </script>

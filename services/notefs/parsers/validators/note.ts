@@ -1,10 +1,12 @@
+import {ValidationTarget} from '~/services/notefs/parsers/validators/node'
 import NodeValidator from '~/services/notefs/parsers/validators/node'
-import {Key} from '~/services/notefs/nodes/node' 
+import {Key} from '~/services/notefs/node' 
 
 
 export interface ValidatedNote {
     id: Key;
     name: string;
+    tag?: Key;
     description?: string;
 }
 
@@ -15,14 +17,14 @@ export default class NoteValidator extends NodeValidator<ValidatedNote> {
         return type === 'note';
     }
 
-    protected checkProps(model: object): boolean {
-        return this.hasDescription(model)
+    protected checkProps(model: ValidationTarget): boolean {
+        let {description} = model;
+
+        return this.hasDescription(description)
     }
 
-    private hasDescription(model: object) {
-        let description = (model as any).description;
-
+    private hasDescription(description: unknown) {
         return typeof description === 'undefined'
-            || typeof description === 'string'
+            || typeof description === 'string';
     }
 }

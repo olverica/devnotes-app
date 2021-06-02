@@ -1,5 +1,4 @@
-
-import {Key} from '~/services/notefs/nodes/node' 
+import {Key} from '~/services/notefs/node' 
 
 
 export interface ValidatedNode {
@@ -20,7 +19,7 @@ export default abstract class  NodeValidator<T extends ValidatedNode> {
             && this.checkProps(model)
     }
 
-    private isNode( {id, name, type}: ValidationTarget) {
+    private isNode({id, name, type}: ValidationTarget) {
         return this.hasId(id)
             && this.hasName(name)
             && this.hasType(type)

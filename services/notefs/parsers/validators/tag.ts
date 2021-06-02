@@ -1,6 +1,6 @@
 import {ValidationTarget} from '~/services/notefs/parsers/validators/node'
 import ParentValidator from '~/services/notefs/parsers/validators/parent'
-import {Key} from '~/services/notefs/nodes/node' 
+import {Key} from '~/services/notefs/node' 
 
 export interface ValidatedTag {
     id: Key;
