@@ -1,4 +1,4 @@
-import TagNode, {TagChild} from '~/services/notefs/nodes/tag'
+import TagNode, {TagChild} from '~/services/notefs/nodes_deprecated/tag'
 import NodeBuilder from '~/services/notefs/builders/node'
 import {Key} from '~/services/notefs/node'
 

@@ -1,27 +1,20 @@
-import {Key, ParentNode} from '~/services/notefs/node'
+import ArrayedParent from '~/services/notefs/nodes/bases/arrayed-parent'
 import NoteNode from '~/services/notefs/nodes/note'
+import {Key} from '~/services/model'
 
 
 export type TagChild = NoteNode;
 
+export default class TagNode extends ArrayedParent<TagChild> {
 
-export default class TagNode implements ParentNode<TagChild> {
-
-    public children: NoteNode[];
-    
-    public parent?: ParentNode;
-    
     public color: string;
-    
+
     public name: string;
-    
-    public id: Key;
 
 
     constructor(id: Key, name: string, color: string, children: TagChild[]) {
-        this.id = id;
-        this.name = name;
+        super(id, children);
         this.color = color;
-        this.children = children;
+        this.name = name;
     }
 }

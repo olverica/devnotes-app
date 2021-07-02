@@ -1,11 +1,10 @@
-import TreeNode, {Key, ParentNode} from '~/services/notefs/node'
+import TreeNode, {NodeVisitor} from '~/services/notefs/node'
+import {Key} from '~/services/model'
 
 
 export default class NoteNode implements TreeNode {
 
     public description?: string;
-    
-    public parent?: ParentNode;
 
     public name: string;
 
@@ -16,5 +15,9 @@ export default class NoteNode implements TreeNode {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public accept(visitor: NodeVisitor) {
+        visitor.node(this);
     }
 }

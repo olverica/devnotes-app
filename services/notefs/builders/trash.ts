@@ -1,7 +1,6 @@
-
-import TrashNode, {TrashChild} from '~/services/notefs/nodes/trash'
-import TreeNode, {Key} from '~/services/notefs/node'
+import TrashNode, {TrashChild} from '~/services/notefs/nodes_deprecated/trash'
 import NodeBuilder from '~/services/notefs/builders/node'
+import {Key} from '~/services/notefs/node'
 
 
 export default class TrashBuilder extends NodeBuilder<TrashNode> {
@@ -9,7 +8,7 @@ export default class TrashBuilder extends NodeBuilder<TrashNode> {
     protected $children: TrashChild[] = [];
 
 
-    public children(children: TreeNode[]) {
+    public children(children: TrashChild[]) {
         this.$children = children;
         return this;
     }

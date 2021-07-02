@@ -1,24 +1,34 @@
-import NoteValidator, {ValidatedNote} from '~/services/notefs/parsers/validators/note'
-import NodeParser from '~/services/notefs/parsers/node'
+import {SimpleParser} from '~/services/model/parser'
 import NoteNode from '~/services/notefs/nodes/note'
-import Builder from '~/services/notefs/builder'
+import isString from '~/services/model/validation/rules/string'
+import isKey from '~/services/model/validation/rules/key'
+import {Key} from '~/services/model'
 
 
-export default class NoteParser extends NodeParser<NoteNode, ValidatedNote> {
+export interface ValidatedNote {
+    id: Key;
+    parent: Key;
+    name: string;
+    description: string;
+}
 
-    protected validate(model: unknown): model is ValidatedNote {
-        let validator = new NoteValidator();
 
-        return validator.check(model);
+export default class NoteParser extends SimpleParser<ValidatedNote, NoteNode> {
+
+    rules() {
+       return {
+            id: isKey,
+            parent: isKey,
+            name: isString,
+            description: isString
+        }
     }
-    
-    protected createNode(model: ValidatedNote): NoteNode {
-        let {id, name, description} = model;
 
-        return Builder.note()
-            .id(id)
-            .name(name)
-            .description(description)
-            .build();
+    convert(model: ValidatedNote) {
+        return new NoteNode(
+            model.id,
+            model.name,
+            model.description
+        )
     }
 }

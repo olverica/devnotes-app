@@ -1,4 +1,4 @@
-import FolderNode, {FolderPermission as Permission} from '~/services/notefs/nodes/folder'
+import FolderNode, {FolderPermission as Permission} from '~/services/notefs/nodes_deprecated/folder'
 import FolderContainer from '~/services/notefs/containers/folder'
 import Builder from '~/services/notefs/builder'
 

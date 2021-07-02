@@ -20,10 +20,9 @@
 import Vue from 'vue' 
 import {ref} from '@nuxtjs/composition-api'
 import Cursor from '~/services/cursor'
-import Project from '~/services/notefs/nodes/project'
-import TreeParser from '~/services/notefs/parser'
+import Project from '~/models/project'
 import {Component, ProvideReactive} from 'nuxt-property-decorator'
-
+import ProjectParser from '~/services/project/parser'
 
 @Component
 export default class IndexPage extends Vue {
@@ -61,14 +60,15 @@ export default class IndexPage extends Vue {
 
   createProject() {
     let tree = this.createTree();
-    let project = this.parseTree(tree);
+    let project = this.parseProject(tree);
+
     ref(project);
 
     return project;
   }
     
-  parseTree(tree: object) {
-    let parser = new TreeParser();
+  parseProject(tree: object) {
+    let parser = new ProjectParser();
     let project = parser.eat(tree);
 
     return project;
@@ -78,6 +78,18 @@ export default class IndexPage extends Vue {
     return {
       id: 'project',
       name: 'project',
+      trash: {
+        id: 'trash',
+        type: 'trash-bin',
+        children: [{
+            id: 'garbage',
+            type: 'garbage',
+            deletedAt: 'asd',
+            node: {id: 'note 10', type: 'note', name: 'some'}
+          }
+        ]
+      },  
+
       root: {
         id: 'root', type: 'root', name: 'some',
         children: [

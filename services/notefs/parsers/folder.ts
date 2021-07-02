@@ -1,31 +1,35 @@
-import FolderValidator, {ValidatedFolder} from '~/services/notefs/parsers/validators/folder'
-import FolderNode, {FolderChild} from '~/services/notefs/nodes/folder'
-import ParentParser from '~/services/notefs/parsers/parent'
-import NoteParser from '~/services/notefs/parsers/note'
-import TagParser from '~/services/notefs/parsers/tag'
-import Builder from '~/services/notefs/builder'
+import FolderNode, {FolderPermission} from '~/services/notefs/nodes/folder'
+import isFolderPermission from '~/services/model/validation/rules/folder-permission'
+import {SimpleParser} from '~/services/model/parser'
+import isString from '~/services/model/validation/rules/string'
+import isKey from '~/services/model/validation/rules/key'
+import {Key} from '~/services/model'
 
 
-export default class FolderParser extends ParentParser<FolderNode, ValidatedFolder, FolderChild> {
-    
-    protected childParsers = [
-        new NoteParser(), new TagParser(),
-    ]
+export interface ValidatedFolder {
+    id: Key;
+    parent: Key;
+    name: string;
+    permission: FolderPermission;
+}
 
+export default class FolderParser extends SimpleParser<ValidatedFolder, FolderNode> {
 
-    protected validate(model: unknown): model is ValidatedFolder {
-        let validator = new FolderValidator();
-
-        return validator.check(model);
+    rules() {
+       return {
+            id: isKey,
+            parent: isKey,
+            name: isString,
+            permission: isFolderPermission
+        }
     }
 
-    protected createParent(model: ValidatedFolder): FolderNode {
-        let {id, name, permission} = model;
-       
-        return Builder.folder()
-            .id(model.id)
-            .name(name)
-            .permission(permission)
-            .build();
+    convert(model: ValidatedFolder) {
+        return new FolderNode(
+            model.id,
+            model.name,
+            model.permission,
+            []
+        )
     }
 }

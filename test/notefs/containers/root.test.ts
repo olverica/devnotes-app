@@ -1,5 +1,5 @@
 import RootContainer from '~/services/notefs/containers/root'
-import RootNode from '~/services/notefs/nodes/root'
+import RootNode from '~/services/notefs/nodes_deprecated/root'
 import Builder from '~/services/notefs/builder'
 
 

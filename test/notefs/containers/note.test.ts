@@ -1,5 +1,5 @@
 import NoteContainer from '~/services/notefs/containers/note'
-import NoteNode from '~/services/notefs/nodes/note'
+import NoteNode from '~/services/notefs/nodes_deprecated/note'
 import Builder from '~/services/notefs/builder'
 
 

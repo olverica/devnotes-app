@@ -1,4 +1,4 @@
-import RootNode, {RootChild} from '~/services/notefs/nodes/root'
+import RootNode, {RootChild} from '~/services/notefs/nodes_deprecated/root'
 import TreeNode, {Key} from '~/services/notefs/node'
 import NodeBuilder from '~/services/notefs/builders/node'
 

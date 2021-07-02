@@ -1,5 +1,5 @@
 import NodeBuilder from '~/services/notefs/builders/node'
-import NoteNode from '~/services/notefs/nodes/note'
+import NoteNode from '~/services/notefs/nodes_deprecated/note'
 import {Key} from '~/services/notefs/node'
 
 

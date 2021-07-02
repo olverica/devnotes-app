@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import Project from '~/services/notefs/nodes/project'
+import Project from '~/models/project'
 import RootNode, {RootChild} from '~/services/notefs/nodes/root'
 import TreeNodeSorter from '~/mixins/tree-node-sorter'
 import {Component, Prop, mixins} from 'nuxt-property-decorator'

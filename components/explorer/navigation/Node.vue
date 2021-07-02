@@ -11,7 +11,7 @@
   <explorer-navigation-nodes-folder
     v-else-if="isFolder()"
     :node="node"/>
-    
+
 </template>
 
 <script lang="ts">
