@@ -3,50 +3,25 @@
 
     <div class="explorer__dropdown">
       <i class="explorer__dropdown_icon">github</i>
-      <span class="explorer__dropdown_header">some_dir</span>
-
-        <div class="dropdown dropdown--dark">
-          <button class="dropdown__settings">settings</button>
-          <div class="dropdown__scrollable">
-            <button class="dropdown__item">
-              <i class="dropdown__item_icon">github</i>
-              <span class="dropdown__item_name">project-name</span>
-            </button>
-            <button class="dropdown__item">
-              <i class="dropdown__item_icon">github</i>
-              <span class="dropdown__item_name">project-name</span>
-            </button>
-            <button class="dropdown__item">
-              <i class="dropdown__item_icon">github</i>
-              <span class="dropdown__item_name">project-name</span>
-            </button>
-            <button class="dropdown__item">
-              <i class="dropdown__item_icon">github</i>
-              <span class="dropdown__item_name">project-name</span>
-            </button>
-            <button class="dropdown__item">
-              <i class="dropdown__item_icon">github</i>
-              <span class="dropdown__item_name">project-name</span>
-            </button>
-          </div>
-        </div>
+      <span class="explorer__dropdown_title">some_dir</span>
+      <i class="explorer__dropdown_arrow">chevron</i>
     </div>
 
     <button class="explorer__control">
       back
-      <i class="ol-icons">go_back</i>
+      <i class="explorer__control_icon">go_back</i>
     </button>
     <button class="explorer__control">
       clear all
-      <i class="ol-icons">stars</i>
+      <i class="explorer__control_icon">stars</i>
     </button>
     <button class="explorer__control">
       create
-      <i class="ol-icons">pen</i>
+      <i class="explorer__control_icon">pen</i>
     </button>
     <button class="explorer__control">
       close all
-      <i class="ol-icons">close_all</i>
+      <i class="explorer__control_icon">close_all</i>
     </button>
   </div>
 </template>

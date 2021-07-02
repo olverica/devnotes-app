@@ -1,23 +1,23 @@
 <template>
   <div 
-    class="viewer__card"
+    class="card"
     :class="modifier">
 
-    <div class="viewer__card_inner">
+    <div class="card__content">
 
-      <div class="viewer__card_header">
-        <i class="viewer__card_icon ol-icons">{{ type }}</i>
-        <button class="viewer__card_button ol-icons">more</button>
+      <div class="card__header">
+        <i class="card__icon">{{ type }}</i>
+        <button class="card__button">more</button>
       </div>
 
-      <div class="viewer__card_title">
-        <h5>{{ name }}</h5>
+      <div class="card__title">
+        <h5 class="card__title_text">{{ name }}</h5>
         <i class="sticker sticker--updated">updated</i>
       </div>
 
-      <div class="viewer__card_footer">
-        <span class="viewer__card_details">0 files</span>
-        <time class="viewer__card_date">may 0 2021</time>
+      <div class="card__footer">
+        <span class="card__details">0 files</span>
+        <time class="card__date">may 0 2021</time>
       </div>
 
     </div>
@@ -38,7 +38,7 @@ export default class Card extends Vue {
 
 
   get modifier(): string  {
-    return this.type ? 'viewer__card--' + this.type : ''
+    return this.type ? 'card--' + this.type : ''
   }
 }
 </script>

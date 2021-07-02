@@ -1,24 +1,15 @@
 .viewer
   padding: 40px
-  background: $color-ui-white
-  // grid
-  display: grid
-  grid-template-areas: "controls" "area"
-  grid-template-columns: 1fr
-  grid-template-rows: max-content 1fr
-  grid-row-gap: 40px
-
-  
-.viewer__controls
-  grid-area: controls
-
-
-.viewer__area
-  grid-area: area
   // temp
   display: flex
   flex-direction: column
-  gap: 40px
+
+// temp
+.viewer__area
+  display: grid
+  grid-auto-flow: row
+  grid-auto-rows: max-content
+  grid-row-gap: 40px
 
 
 .viewer__section
@@ -27,24 +18,11 @@
   grid-auto-rows: max-content
   grid-gap: 30px
 
+@import controls/controls
+@import controls/controls_tags
+@import controls/controls_button
+@import controls/controls_switch
+@import controls/controls_dropdown
 
-.viewer__button
-  height: 40px
-  display: flex
-  align-items: center
-  border-radius: $radius-small-size
-  background: $color-ui-whitesmoke
-  color: $color-text-dark
-
-.viewer__button
-  min-width: 40px
-  justify-content: center
-  // 
-  .ol-icons
-    font-size: $heading-small-size
-
-  
-@import viewer_controls
-@import viewer_title
-@import viewer_card
-@import viewer_card_types
+@import card/card
+@import card/card_type

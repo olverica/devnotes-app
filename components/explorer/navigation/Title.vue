@@ -5,7 +5,7 @@
 
     <i class="navigation__item_icon"></i>
 
-    <h6 class="navigation__item_name">{{ name }}</h6>
+    <span class="navigation__item_name">{{ name }}</span>
 
     <i class="sticker"></i>
   </button>

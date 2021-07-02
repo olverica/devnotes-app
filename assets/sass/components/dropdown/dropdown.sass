@@ -1,0 +1,25 @@
+.dropdown
+  padding: 10px
+  border-radius: $radius-small
+  overflow: hidden
+  // grid
+  display: grid
+  grid-template-rows: max-content 1fr
+  grid-gap: 10px
+  // temp
+  width: 300px
+
+
+.dropdown__scrollable 
+  overflow-y: auto
+  overflow-x: hidden
+  // grid
+  display: grid
+  grid-template-columns: 100%
+  grid-auto-rows: max-content
+  gap: 10px
+
+
+@import dropdown_item
+@import dropdown_type
+@import dropdown_animation

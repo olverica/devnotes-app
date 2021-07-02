@@ -1,65 +1,22 @@
 .navbar__links
+  // grid
   display: grid
   grid-auto-rows: max-content
-  grid-template-columns: 1fr
   grid-row-gap: 20px
-  grid-area: links
-
-
-.navbar__links--pinned
-  overflow: auto
-  min-height: 150px
-  // grid
-  grid-area: links--pinned
-  // 
-  .navbar__link
-    &::after
+  // pinned state
+  &--pinned
+    min-height: 150px
+    overflow: overlay
+    @include scroll-secondary($ui-dark, $ui-darkgray)
+    // pin icon
+    .navbar__link::after
       @include ol-icons
       content: "pin"
-      font-size: $text-large-size
-  // 
-  @include scroll-secondary($color-ui-dark, $color-ui-gray)
+      font-size: $text-large
 
 
 .navbar__separator
   height: 2px
-  background: $color-ui-dark
-  margin: 20px 0 
-  // grid
-  grid-area: separator
-  
-  
-.navbar__link
-  height: 40px
-  padding: 0 15px
-  border-radius: $radius-small-size
-  font-size: $text-huge-size
-  color: $color-text-lightgray
-  overflow: hidden
-  // flex
-  display: flex
-  align-items: center
-  column-gap: 10px
-  // 
-  &:hover
-    background: $color-ui-dark
-  // 
-  &:active
-    transform: scale(0.99)
-
-
-.navbar__link--active
-  background: $color-ui-white
-  color: $color-text-black
-  // 
-  &:hover
-    background: $color-ui-white
-
-
-.navbar__link_icon
-  font-size: $text-huge-size + 2
-
-
-.navbar__link_name
   width: 100%
-  @include text-overflow
+  margin: 20px 0
+  background: $ui-dark

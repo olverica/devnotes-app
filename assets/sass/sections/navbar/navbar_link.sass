@@ -1,0 +1,33 @@
+.navbar__link
+  width: 100%
+  height: 40px
+  padding: 0 15px
+  color: $text-gray
+  font-size: $text-huge
+  border-radius: $radius-small
+  overflow: hidden
+  // transition
+  transition: background .2s, color .2s
+  // flex 
+  display: flex
+  align-items: center
+  gap: 10px
+  // hover state
+  &:hover
+    background: $ui-dark
+  // active state
+  &--active
+    color: $text-black
+    background: $ui-white !important
+
+
+.navbar__link_icon
+  font-size: $heading-small
+  @include ol-icons
+
+  
+.navbar__link_name
+  width: 100%
+  color: inherit
+  font-size: inherit
+  @include text-overflow

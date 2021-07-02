@@ -1,3 +1,3 @@
 <template>
-  <div class="viewer__dropdown viewer__dropdown--folder dropdown"></div>
+  <div class="viewer__controls_dropdown"></div>
 </template>

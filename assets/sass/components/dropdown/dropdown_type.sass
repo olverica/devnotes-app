@@ -1,0 +1,30 @@
+.dropdown--light
+  background: transparentize($ui-white, .2)
+  box-shadow: inset 0 0 0 1px darken($ui-whitesmoke, 4), 0 5px 20px transparentize(#000, .95)
+  backdrop-filter: blur(20px) saturate(200%)
+  // 
+  .dropdown__scrollable 
+    @include scroll-secondary($ui-whitesmoke, $ui-white)
+  // 
+  .dropdown__item
+    color: $text-dark
+    // 
+    &--settings
+      color: $text-darkgray
+      background: $ui-whitesmoke
+
+
+.dropdown--dark
+  background: transparentize($ui-darkgray, .2)
+  box-shadow: inset 0 0 0 1px $ui-gray, 0 5px 20px transparentize(#000, .95)
+  backdrop-filter: blur(20px) saturate(200%)
+  // 
+  .dropdown__scrollable 
+    @include scroll-secondary($ui-gray, $ui-darkgray)
+  // 
+  .dropdown__item
+    color: $text-gray
+    // 
+    &--settings
+      color: $text-darkgray
+      background: $ui-gray

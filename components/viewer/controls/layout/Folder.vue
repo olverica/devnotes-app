@@ -5,9 +5,6 @@
       <viewer-controls-button-undo/>
       <viewer-controls-dropdown-project/>
       <viewer-controls-dropdown-folder/>
-    </template>
-
-    <template #middle>
       <viewer-controls-tags/>
     </template>
 

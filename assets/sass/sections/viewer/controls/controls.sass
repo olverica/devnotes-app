@@ -1,0 +1,25 @@
+.viewer__controls
+  width: 100%
+  // grid
+  display: grid
+  grid-template-columns: minmax(max-content, 100%) max-content
+  justify-content: space-between
+  grid-column-gap: 20px
+
+
+.viewer__controls_left
+  overflow: hidden  
+
+
+.viewer__controls_right
+  align-self: self-end
+
+
+.viewer__controls_left,
+.viewer__controls_right
+  // grid
+  display: grid
+  grid-auto-flow: column
+  grid-auto-columns: max-content
+  grid-template-rows: max-content
+  grid-column-gap: 10px

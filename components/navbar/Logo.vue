@@ -1,8 +1,8 @@
 <template>
   <div class="navbar__logo">
-    <img class="navbar__logo_img" :src="getSrc()" alt="logo">
+    <img class="navbar__logo_image" :src="getSrc()" alt="logo">
     
-    <h6 class="navbar__logo_title">Dev Notes</h6>
+    <span class="navbar__logo_title">DevNotes</span>
   </div>
 </template>
 

@@ -5,8 +5,6 @@
       <slot name="left"/>
     </div>
 
-    <slot name="middle"/>
-
     <div class="viewer__controls_right">
       <slot name="right"/>
     </div>

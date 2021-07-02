@@ -1,117 +1,16 @@
 .explorer
   width: 250px
   height: 100vh
-  background: $color-ui-dark
-  position: sticky
-  top: 0
-  padding: 40px 20px
+  padding: 40px 20px 30px
+  background: $ui-dark
+  // grid 
   display: grid
   grid-template-columns: 100%
   grid-template-rows: max-content 1fr
-  grid-row-gap: 30px
-  
+  grid-gap: 30px
+  // position
+  top: 0
+  position: sticky 
 
-.navigation
-  overflow: auto  
-  @include scroll-secondary($color-ui-lightgray, lighten($color-ui-lightgray, 2))
-
-.navigation,
-.navigation__folder_outer,
-.navigation__folder_inner,
-.navigation__tag_outer,
-.navigation__tag_inner
-  display: flex
-  flex-direction: column
-  gap: 20px
-
-
-.navigation__folder_inner
-  //
-  .navigation__item
-    &::before
-      font-family: "ol-icons"
-      content: "dot"
-      font-size: $text-tiny-size
-      transition: color .2s
-
-  
-.explorer__dropdown
-  width: 100%
-  height: 40px
-  color: $color-text-white
-  position: relative
-  cursor: pointer
-  // grid
-  display: grid
-  grid-template-columns: max-content 1fr max-content
-  grid-auto-rows: max-content
-  align-items: center
-  align-content: center
-  gap: 10px
-  // dropdown arrow
-  &::after
-    @include ol-icons
-    content: "chevron"
-    font-size: $text-tiny-size
-    transition: transform .2s
-  // active state
-  &--active
-    &::after
-      transform: rotate(180deg)
-
-
-.explorer__dropdown_icon
-  @include ol-icons
-  font-size: $heading-small-size + 2px
-
-
-.explorer__dropdown_header
-  @include text-overflow
-  font-size: $heading-small-size
-  
-// ===============
-// import elements
-// ===============
-
-@import explorer_header
-@import explorer_navigation
-
-// =========
-// temporary
-// =========
-
-.navigation__tag_outer
-
-  // tag item colors
-
-  .navigation__item--tag
-    background: transparentize(#fd3a69, 0.9)
-    color: transparentize(#fd3a69, 0.3)
-  // 
-  .navigation__item_icon
-    color: #fd3a69
-
-  // tag item hover & opened states
-
-  .navigation__item--tag.navigation__item--opened,
-  .navigation__item--tag.navigation__item:hover
-    color: #fd3a69
-
-  // tag childs colors
-
-  .navigation__item
-    &::before
-      color: transparentize(#fd3a69, 0.3)
-  // 
-  .navigation__item_icon
-    &::before
-      color: #fd3a69
-
-  // tag childs hover & opened states
-
-  .navigation__item.navigation__item--opened,
-  .navigation__item.navigation__item:hover
-    &::before
-      color: #fd3a69
-
-
+@import explorer_controls
+@import navigation

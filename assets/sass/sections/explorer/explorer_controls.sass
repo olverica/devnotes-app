@@ -1,0 +1,62 @@
+.explorer__controls
+  // grid
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: max-content 1fr 1fr
+  grid-gap: 5px
+
+// =================
+// explorer dropdown
+// =================
+
+.explorer__dropdown
+  height: 40px
+  margin-bottom: 20px
+  color: $text-white
+  cursor: pointer
+  overflow: hidden
+  // grid
+  grid-column: 1 / 3
+  // flex
+  display: flex
+  align-items: center
+  gap: 10px
+
+
+.explorer__dropdown_icon
+  @include ol-icons
+  font-size: $heading-small + 2px
+  
+
+.explorer__dropdown_title
+  width: 100%
+  font-size: $heading-small
+  @include text-overflow
+
+
+.explorer__dropdown_arrow
+  @include ol-icons
+  font-size: $text-tiny
+
+// =======================
+// explorer control button
+// =======================
+
+.explorer__control
+  height: 25px
+  padding: 0 10px
+  background: $ui-darkgray
+  border-radius: $radius-tiny
+  font-size: $text-small
+  color: $text-gray
+  user-select: none
+  // flex
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 5px
+
+
+.explorer__control_icon
+  @include ol-icons
+  font-size: $text-medium

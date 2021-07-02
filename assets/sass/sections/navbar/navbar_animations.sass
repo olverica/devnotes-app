@@ -1,0 +1,77 @@
+// ============================
+// profile image hover animaton
+// ============================
+
+.navbar__profile_image:hover::before
+  // animation
+  opacity: 1
+  transform: rotate(0deg)
+  font-size: $heading-medium
+
+// ========================
+// navbar minimize animaton
+// ========================
+
+.navbar--minimized
+  width: 80px
+  //
+  .navbar__profile_image
+    width: 40px
+    height: 40px
+    margin: 10px 0
+    // hover icon
+    &::before
+      font-size: $heading-small
+  //
+  .navbar__link
+    padding: 0 11px
+  // 
+  .navbar__logo_image
+    width: 40px
+  // 
+  .navbar__profile_name,
+  .navbar__profile_role,
+  .navbar__link_name,
+  .navbar__link:after,
+  .navbar__logo_title
+    opacity: 0
+
+// =========================
+// avbar minimize transition
+// =========================
+
+.navbar
+  // durations
+  $long-duration: .3s
+  $short-duration: .2s
+  // timing functions
+  $long-function: ease-in-out
+  $short-function: ease-in-out
+  // 
+  transition-property: width
+  transition-duration: $long-duration
+  transition-timing-function: $long-function
+  // 
+  .navbar__profile_image,
+  .navbar__logo_image
+    transition-property: height, width, margin
+    transition-duration: $long-duration
+    transition-timing-function: $long-function
+  // 
+  .navbar__link
+    transition-property: padding, background
+    transition-duration: $short-duration
+    transition-timing-function: $short-function
+  // 
+  .navbar__link_name
+    transition-property: opacity
+    transition-duration: $short-duration
+    transition-timing-function: $short-function
+  // 
+  .navbar__profile_name,
+  .navbar__profile_role,
+  .navbar__link:after,
+  .navbar__logo_title
+    transition-property: opacity
+    transition-duration: $short-duration
+    transition-timing-function: $short-function

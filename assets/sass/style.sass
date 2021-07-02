@@ -3,14 +3,14 @@
 // ==============
 
 @import presets/reset
-@import presets/breakpoints
+@import presets/mixins
 
 // =============
 // layout import
 // =============
 
+@import layout/breakpoints
 @import layout/variables
-@import layout/mixins
 @import layout/layout
 
 // ============
@@ -21,21 +21,13 @@
 @import fonts/poppins
 @import fonts/roboto-mono
 
-// ============
-// pages import
-// ============
-
-@import pages/login
-
 // =================
 // components import
 // =================
-
+  
 @import components/sticker
-@import components/dropdown
-@import components/switch
-@import components/status
-
+@import components/dropdown/dropdown
+@import components/switch/switch
 // ===============
 // sections import
 // ===============
@@ -43,20 +35,23 @@
 @import sections/navbar/navbar
 @import sections/explorer/explorer
 @import sections/viewer/viewer
-@import sections/editor/editor
 
-// =========
-// temporary
-// =========
+// ====
+// temp
+// ====
 
-.grid-tmp
+.root
   display: grid
-  grid-template-columns: max-content max-content 1fr
+  grid-template-columns: max-content 1fr
+  grid-template-rows: 100vh
 
-.tmp
+.project
   display: grid
-  grid-template-columns: 1fr 1fr 1fr 1fr 
-  grid-template-rows: max-content
-  gap: 30px
+  grid-template-columns: max-content 1fr
+  grid-template-rows: 100vh
 
-  
+.dropdowns-tmp
+  padding: 100px
+  display: flex
+  gap: 50px
+  @include background-image-url("https://images.unsplash.com/photo-1623850015197-9aa664d33e66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80")

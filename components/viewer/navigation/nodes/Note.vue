@@ -1,6 +1,6 @@
 <template>
   <viewer-navigation-card
-    type="file"
+    type="note"
     :name="name"
     @click.native="select"/>
 </template>

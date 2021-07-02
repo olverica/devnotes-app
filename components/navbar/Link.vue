@@ -8,7 +8,7 @@
     :disabled="disabled"
     :to="to">
 
-    <i class="navbar__link_icon ol-icons">
+    <i class="navbar__link_icon">
       {{ icon }}
     </i>
 

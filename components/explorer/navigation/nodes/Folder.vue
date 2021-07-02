@@ -24,10 +24,10 @@ export default class Folder extends Vue {
           return 'folder';
 
       case Permission.Private:
-          return 'developers';
+          return 'private';
 
       case Permission.Public:
-          return 'customer';
+          return 'public';
     }
   }
 }
