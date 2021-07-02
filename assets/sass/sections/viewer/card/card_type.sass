@@ -1,0 +1,60 @@
+.card--folder,
+.card--note
+  background: $ui-whitesmoke 
+  // 
+  .card__title,
+  .card__button
+    color: $text-dark
+  // 
+  .card__footer
+    color: $text-darkgray
+
+
+.card--folder
+  .card__icon
+    color: $elem-folder
+
+
+.card--note
+  .card__icon
+    color: $elem-note
+
+  
+.card--private,
+.card--public,
+.card--acrchive,
+.card--trash
+  padding-bottom: 56.25%
+  // 
+  .card__icon
+    font-size: 50px
+
+
+// temp
+
+.card--private
+  background: transparentize($elem-private, .8)
+  // 
+  .card__icon
+    color: $elem-private
+
+
+.card--public
+  background: transparentize($elem-public, .8)
+  // 
+  .card__icon
+    color: $elem-public
+
+
+.card--archive
+  background: transparentize($elem-archive, .8)
+  // 
+  .card__icon
+    color: $elem-archive
+
+
+.card--trash
+  background: transparentize($elem-trash, .8)
+  // 
+  .card__icon
+    color: $elem-trash

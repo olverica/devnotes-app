@@ -1,6 +1,6 @@
 <template>
   <explorer-navigation-title
-    type="file"
+    type="note"
     :name="name"
     @click.native="select"/>
 </template>

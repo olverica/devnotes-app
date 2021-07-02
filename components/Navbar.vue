@@ -8,6 +8,7 @@
       <navbar-links :links="links"/>
 
       <hr class="navbar__separator">
+      
       <navbar-pinned :links="pinned"/>
     </div>
 

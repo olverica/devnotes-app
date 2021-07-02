@@ -1,0 +1,80 @@
+.card 
+  width: 100%
+  height: max-content
+  padding-bottom: 66.666%
+  border-radius: $radius-huge
+  overflow: hidden
+  position: relative
+
+
+.card__content
+  padding: 30px
+  // grid
+  display: grid
+  grid-row-gap: 5px
+  grid-template-rows: 1fr repeat(2, max-content)
+  // position
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+
+.card__header,
+.card__title,
+.card__footer
+  overflow: hidden
+  // flex
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 5px
+
+// ===========
+// card header  
+// ===========
+
+.card__header
+  height: max-content  
+
+
+.card__icon
+  @include ol-icons
+  font-size: 60px
+
+
+.card__button
+  transform: rotate(90deg)
+  @include ol-icons
+  font-size: 20px
+
+
+// ==========
+// card title 
+// ==========
+
+.card__title
+  font-size: $heading-medium
+  font-weight: $weight-semibold
+
+
+.card__title_text
+  @include text-overflow
+
+// ===========
+// card footer
+// ===========
+
+.card__footer
+  font-size: $text-small 
+  font-weight: $weight-semibold
+
+
+.card__details
+  @include text-overflow
+
+
+.card__date
+  white-space: nowrap
+

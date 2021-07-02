@@ -30,8 +30,8 @@ export default class Folder extends Vue {
 
     switch (permission) {
       case Permission.Protected: return 'folder';
-      case Permission.Private: return 'developers';
-      case Permission.Public: return 'customer';
+      case Permission.Private: return 'private';
+      case Permission.Public: return 'public';
     }
   }
 }

@@ -1,0 +1,104 @@
+// =============
+// default state
+// =============
+  
+.navigation__item--note
+  .navigation__item_icon:before
+    content: "note"
+    color: $elem-note
+
+
+.navigation__item--folder
+  .navigation__item_icon:before
+    content: "folder"
+    color: $elem-folder
+
+
+.navigation__item--private
+  .navigation__item_icon:before
+    content: "private"
+    color: $elem-private
+
+
+.navigation__item--public
+  .navigation__item_icon:before
+    content: "public"
+    color: $elem-public
+
+
+.navigation__item--archive
+  .navigation__item_icon:before
+    content: "archive"
+    color: $elem-archive
+
+
+.navigation__item--trash
+  .navigation__item_icon:before
+    content: "trash"
+    color: $elem-trash
+
+// folder arrow
+.navigation__item--folder,
+.navigation__item--private,
+.navigation__item--public
+  &::before
+    @include ol-icons
+    content: "chevron"
+    font-size: $text-tiny
+    transform: rotate(-90deg)
+
+// type tag
+.navigation__item--tag
+  height: 30px
+  border-radius: $radius-small
+  background: transparentize($ui-white, .9)
+  // icon
+  .navigation__item_icon:before
+    content: "tag"
+  // arrow
+  &::after
+    @include ol-icons
+    content: "chevron"
+    font-size: $text-tiny
+    transform: rotate(90deg)
+    
+// ============
+// opened state
+// ============
+
+.navigation__item--folder.navigation__item--opened
+  .navigation__item_icon:before
+    content: "folder_opened"
+
+
+.navigation__item--private.navigation__item--opened
+  .navigation__item_icon:before
+    content: "private_opened"
+
+
+.navigation__item--public.navigation__item--opened
+  .navigation__item_icon:before
+    content: "public_opened"
+
+
+.navigation__item--archive.navigation__item--opened
+  .navigation__item_icon:before
+    content: "archive_opened"
+
+
+.navigation__item--trash.navigation__item--opened
+  .navigation__item_icon:before
+    content: "trash_opened"
+
+// folder arrow
+.navigation__item--folder.navigation__item--opened,
+.navigation__item--private.navigation__item--opened,
+.navigation__item--public.navigation__item--opened
+  &::before
+    transform: rotate(0deg)
+
+// type tag
+.navigation__item--tag.navigation__item--opened
+  &::after
+    transform: rotate(0deg)
+

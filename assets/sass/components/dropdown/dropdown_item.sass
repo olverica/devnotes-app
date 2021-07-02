@@ -1,0 +1,27 @@
+.dropdown__item
+  height: 25px
+  padding: 0 10px
+  // flex
+  display: flex
+  align-items: center
+  gap: 5px
+  //
+  &--settings
+    // flex
+    justify-content: center
+    border-radius: $radius-tiny
+    // icon
+    .dropdown__item_icon
+      font-size: $text-medium
+
+
+.dropdown__item_icon
+  @include ol-icons
+  font-size: $text-huge
+
+
+.dropdown__item_name
+  font-weight: inherit
+  font-size: $text-small
+  @include text-overflow
+

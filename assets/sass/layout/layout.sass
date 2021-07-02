@@ -1,33 +1,53 @@
 @use "sass:map"
 
-html
-  font-size: 10px
+@mixin scroll-primary($background, $hover)
+  // 
+  &::-webkit-scrollbar
+    width: 14px
+  // 
+  &::-webkit-scrollbar-track
+    width: 100%
+    border-radius: 100px
+  // 
+  &::-webkit-scrollbar-thumb
+    background: $background
+    border-radius: 100px
+    background-clip: padding-box
+    border: solid transparent 4px
+  // 
+  &::-webkit-scrollbar-thumb:hover
+    background: $hover
+    background-clip: padding-box
+
+
+@mixin scroll-secondary($background, $hover)
+  // 
+  &::-webkit-scrollbar
+    width: 8px
+  // 
+  &::-webkit-scrollbar-track
+    width: 100%
+    border-radius: 100px
+  // 
+  &::-webkit-scrollbar-thumb
+    background: $background
+    border-radius: 100px
+    background-clip: padding-box
+    border: solid transparent 2px
+  // 
+  &::-webkit-scrollbar-thumb:hover
+    background: $hover
+    background-clip: padding-box
+
 
 body 
   font-family: 'Poppins', sans-serif
   font-weight: $weight-medium
-  overflow-x: hidden 
+  line-height: 1.2
   overflow-y: overlay
-  @include scroll-primary
+  background: $ui-white
+  @include scroll-primary($ui-whitesmoke, darken($ui-whitesmoke, 4))
 
-button
-  &:active
-    transform: scale(0.99)
-
-.login
-  background: $color-dark-6
-
-.project
-  display: grid
-  grid-template-columns: max-content 1fr 
-  grid-template-rows: auto
-
-// temp
-
-.root 
-  display: grid
-  grid-template-columns: max-content 1fr 
-  grid-template-rows: auto
 
 // ==========
 // containers

@@ -1,0 +1,38 @@
+// ==================================
+// hue saturation brightness function
+// ==================================
+
+@function hsb($h-hsb, $s-hsb, $b-hsb, $a: 1)
+  @if $b-hsb == 0
+    @return hsla(0, 0, 0, $a)
+  @else
+    $l-hsl: ($b-hsb/2) * (2 - ($s-hsb/100))
+    $s-hsl: ($b-hsb * $s-hsb) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2)
+    @return hsla($h-hsb, $s-hsl * 1%, $l-hsl * 1%, $a)
+
+// ===================
+// adaptive view width
+// ===================
+
+@function vw($px, $viewport)
+  @return #{$px / $viewport * 100}vw    
+
+
+@mixin background-image-url($url)
+  background-image: url($url)
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: cover
+
+
+@mixin background-image
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: cover
+
+  
+@mixin text-overflow
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+  

@@ -1,3 +1,3 @@
 <template>
-  <div class="viewer__dropdown dropdown">some</div>
+  <div class="viewer__controls_dropdown">some</div>
 </template>

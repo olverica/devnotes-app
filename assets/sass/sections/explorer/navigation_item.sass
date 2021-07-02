@@ -1,0 +1,35 @@
+.navigation__item
+  width: 100%
+  height: 20px
+  padding: 0 10px
+  color: $text-gray
+  font-size: $text-huge
+  overflow: hidden
+  // transition
+  transition: color .2s
+  // flex
+  display: flex
+  align-items: center
+  gap: 10px
+  // hover state
+  &:hover
+    color: $text-lightgray
+  // active state
+  &--opened
+    color: $text-white !important
+  // transition
+  &::before,
+  &::after
+    transition: transform .2s
+
+
+.navigation__item_icon:before
+  display: flex
+  @include ol-icons
+  font-size: $heading-small
+
+
+.navigation__item_name
+  width: 100%
+  font-size: inherit
+  @include text-overflow
