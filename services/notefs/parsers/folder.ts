@@ -1,72 +1,31 @@
-import NoteValidator, {ValidatedNote} from '~/services/notefs/parsers/validators/note'
-import TagValidator, {ValidatedTag} from '~/services/notefs/parsers/validators/tag'
-import FolderNote, {FolderChild} from '~/services/notefs/nodes/folder'
-import {ValidatedFolder} from '~/services/notefs/parsers/validators/folder'
+import FolderValidator, {ValidatedFolder} from '~/services/notefs/parsers/validators/folder'
+import FolderNode, {FolderChild} from '~/services/notefs/nodes/folder'
+import ParentParser from '~/services/notefs/parsers/parent'
 import NoteParser from '~/services/notefs/parsers/note'
 import TagParser from '~/services/notefs/parsers/tag'
 import Builder from '~/services/notefs/builder'
 
 
-
-export default class FolderParser {
+export default class FolderParser extends ParentParser<FolderNode, ValidatedFolder, FolderChild> {
     
-    private noteValidator = new NoteValidator();
-
-    private tagValidator = new TagValidator();
-
-    private noteParser = new NoteParser();
-
-    private tagParser = new TagParser();
+    protected childParsers = [
+        new NoteParser(), new TagParser(),
+    ]
 
 
-    public generate(model: ValidatedFolder): FolderNote {
-        let children = 
-            this.createChildren(model);
+    protected validate(model: unknown): model is ValidatedFolder {
+        let validator = new FolderValidator();
 
+        return validator.check(model);
+    }
+
+    protected createParent(model: ValidatedFolder): FolderNode {
+        let {id, name, permission} = model;
+       
         return Builder.folder()
             .id(model.id)
-            .name(model.name)
-            .children(children)
-            .permission(model.permission)
+            .name(name)
+            .permission(permission)
             .build();
-    }
-
-    private createChildren(model: ValidatedFolder): FolderChild[]  {
-        let children: FolderChild[] = [];
-
-        for (let child of model.children) {
-            let node = 
-                this.createChild(child);
-            
-            children.push(node);
-        }
-
-        return children;
-    }
-
-    private createChild(model: unknown): FolderChild {
-        if (this.isNote(model))
-            return this.createNote(model);
-
-        if (this.isTag(model))
-            return this.createTag(model);
-
-        throw Error('Icorrect child type');
-    }
-
-    private isNote(model: unknown): model is ValidatedNote {
-        return this.noteValidator.check(model);
-    }
-
-    private isTag(model: unknown): model is ValidatedTag {
-        return this.tagValidator.check(model);
-    }
-
-    private createNote(model: ValidatedNote) {
-        return this.noteParser.generate(model);
-    }
-
-    private createTag(model: ValidatedTag) {
-        return this.tagParser.generate(model);
     }
 }

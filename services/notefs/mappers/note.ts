@@ -1,5 +1,8 @@
-import Project from '~/services/notefs/project'
-import {Key} from '~/services/notefs/nodes/node'
+import {Key, ParentNode} from '~/services/notefs/node'
+import ParentContainer from '~/services/notefs/containers/parent'
+import NoteContainer from '~/services/notefs/containers/note'
+import NoteNode from '~/services/notefs/nodes/note'
+import Builder from '~/services/notefs/builder'
 
 
 interface UpdateRequest {
@@ -7,36 +10,50 @@ interface UpdateRequest {
     description?: string;
 }
 
-export default class TagMapper {
+interface CreateRequest {
+    name: string;
+    description?: string;
+    parent: ParentNode<NoteNode>
+}
 
-    private project: Project
+export default class NoteMapper {
 
+    async create(request: CreateRequest) {
+        let note = await this.sendCreateRequest(request);
 
-    constructor(project: Project) {
-        this.project = project;
+        let container = new ParentContainer<NoteNode>(request.parent);
+        container.addChild(note);
+    }
+    
+    async update(request: UpdateRequest, note: NoteNode) {
+        await this.sendUpdateRequest(request);
+
+        let container = new NoteContainer(note)
+        container.update(request);
     }
 
-    async update(id: Key, request: UpdateRequest) {
-        await this.sendUpdateRequest(id, request);
+    async delete(note: NoteNode) {
+        await this.sendDeleteRequest();
 
-        this.project
-            .selectNote(id)
-            .update(request);
+        let container = new NoteContainer(note);
+        container.detach();
     }
 
-    async delete(id: Key) {
-        await this.sendDeleteRequest(id);
-
-        this.project
-            .selectNote(id)
-            .delete();
-    }
-
-    private async sendUpdateRequest(id: Key, request: UpdateRequest) {
+    private async sendUpdateRequest(request: UpdateRequest) {
         // 
     }
 
-    private async sendDeleteRequest(id: Key) {
+    private async sendDeleteRequest() {
         // 
+    }
+
+    private async sendCreateRequest(request: CreateRequest) {
+        let date = Date.now();
+
+        return Builder.note()
+            .id(date)
+            .name(request.name)
+            .description(request.description)
+            .build();
     }
 }

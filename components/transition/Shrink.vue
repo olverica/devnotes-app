@@ -24,6 +24,8 @@ export default class Shrink extends Vue {
 
   private height: number = -1;
   
+  private toggling: boolean = false;
+  
   @Ref() inner !: HTMLElement;
 
   @Ref() wrapper !: HTMLElement;
@@ -40,15 +42,20 @@ export default class Shrink extends Vue {
     return this.height === -1 ? 'auto': this.height + 'px';
   }
 
+  get slotShown(): boolean {
+    return this.toggling || !!!this.synckedShrinked;
+  }
 
   mounted() {
     if (this.synckedShrinked)
       this.close();
   }
 
-  toggle(shrinked: boolean) {
-    if (shrinked) this.close();
-    else this.open();
+  async toggle(shrinked: boolean) {
+    if (shrinked) 
+      await this.close();
+    else 
+      await this.open();
   }
 
   async open() {
@@ -75,10 +82,12 @@ export default class Shrink extends Vue {
     await this.$nextTick();
   }
 
-  appendEvent(callback: () => unknown) {
+  appendEvent(callback: () => unknown, timeout= 500) {
     this.wrapper.addEventListener('transitionend', callback, {
       once: true
     })
+
+    setTimeout(callback, timeout);
   }
 
   setAutoHeight() {
@@ -95,6 +104,6 @@ export default class Shrink extends Vue {
 
 .shrinkable_wrapper
   overflow: hidden
-  transition: height .4s 
+  transition: height .4s
 
 </style>

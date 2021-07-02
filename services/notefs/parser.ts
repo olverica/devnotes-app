@@ -1,27 +1,18 @@
-import RootValidator, {ValidatedRoot} from '~/services/notefs/parsers/validators/root'
-import RootParser from '~/services/notefs/parsers/root'
-import RootNode from '~/services/notefs/nodes/root'
+import ProjectParser from '~/services/notefs/parsers/project'
+import ProjectNode from '~/services/notefs/nodes/project'
 
 
 export default class TreeParser {
 
-    private validator = new RootValidator();
-
-    private parser = new RootParser();
+    private parser = new ProjectParser();
 
 
-    public generate(model: unknown): RootNode {
-        if (!!!this.validate(model))
-            throw Error('Incorrect root');
+    public eat(model: unknown): ProjectNode {
+        let parsed = this.parser.eat(model)
 
-        return this.convert(model)
-    }
+        if (!!!parsed)
+            throw Error('Cant parse project');
 
-    private convert(model: ValidatedRoot) {
-        return this.parser.generate(model);
-    }
-
-    private validate(model: unknown): model is ValidatedRoot {
-        return this.validator.check(model);
+        return parsed;
     }
 }

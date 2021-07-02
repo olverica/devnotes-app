@@ -1,7 +1,7 @@
-import ParentNode from '~/services/notefs/nodes/parent'
+import {Key, ParentNode} from '~/services/notefs/node'
 import NoteNode from '~/services/notefs/nodes/note'
 import TagNode from '~/services/notefs/nodes/tag'
-import {Key} from '~/services/notefs/nodes/node'
+
 
 
 export type FolderChild = NoteNode|TagNode;
@@ -13,14 +13,23 @@ export enum FolderPermission {
 }
 
 
-export default class FolderNode extends ParentNode<FolderChild> {
-    
+export default class FolderNode implements ParentNode<FolderChild> {
+
     public permission: FolderPermission;
+    
+    public children: NoteNode[];
+    
+    public parent?: ParentNode;
+    
+    public name: string;
+    
+    public id: Key;
 
 
-    constructor(id: Key, name: string, permission: FolderPermission, children: FolderChild[] = []) {
-        super(id, name, children);
-
+    constructor(id: Key, name: string, permission: FolderPermission, children: FolderChild[]) {
+        this.id = id;
+        this.name = name;
+        this.children = children;
         this.permission = permission;
     }
 }

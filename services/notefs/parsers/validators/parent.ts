@@ -1,6 +1,6 @@
 import {ValidatedNode} from '~/services/notefs/parsers/validators/node'
 import NodeValidator from '~/services/notefs/parsers/validators/node'
-import {Key} from '~/services/notefs/nodes/node' 
+import {Key} from '~/services/notefs/node' 
 
 
 export interface ValidatedParent {

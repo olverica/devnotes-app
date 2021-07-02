@@ -1,18 +1,27 @@
-import ParentNode from '~/services/notefs/nodes/parent'
+import {Key, ParentNode} from '~/services/notefs/node'
 import NoteNode from '~/services/notefs/nodes/note'
-import {Key} from '~/services/notefs/nodes/node'
 
 
 export type TagChild = NoteNode;
 
 
-export default class TagNode extends ParentNode<TagChild> {
+export default class TagNode implements ParentNode<TagChild> {
+
+    public children: NoteNode[];
+    
+    public parent?: ParentNode;
     
     public color: string;
+    
+    public name: string;
+    
+    public id: Key;
 
-    constructor(id: Key, name: string, color: string, children: TagChild[] = []) {
-        super(id, name, children);
 
+    constructor(id: Key, name: string, color: string, children: TagChild[]) {
+        this.id = id;
+        this.name = name;
         this.color = color;
+        this.children = children;
     }
 }
