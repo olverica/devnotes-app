@@ -1,31 +1,19 @@
 <template>
-  <viewer-controls-layout>
-    <template #left>
-      <viewer-controls-button-undo/>
-      <viewer-controls-dropdown-project/>
+  <div class="viewer__controls">
+    <viewer-header-path/>
 
-      <viewer-controls-dropdown-folder
-        v-if="hasFolderParent"
-        :folder="info.parentFolder"/>
-    </template>
-
-    <template #middle>
-      <viewer-controls-tags/>
-    </template>
-
-    <template #right>
-      <viewer-controls-button-create/>
-      <viewer-controls-button-clear/>
-      <viewer-controls-button-view/>
-    </template>
-  </viewer-controls-layout>
+    <div class="viewer__controls_right">
+      <viewer-header-button-create/>
+      <viewer-header-button-clear/>
+      <viewer-header-button-view/>
+    </div>
+  </div>
 </template>
 
 
 <script lang="ts">
 import Vue from 'vue' 
-import TreeNode from '~/services/notefs/nodes/node'
-import ProjectContainer from '~/services/notefs/project'
+import TreeNode from '~/services/notefs/node'
 import {isNote, isFolder, isRoot} from '~/services/notefs/guards'
 import {Component, InjectReactive, Prop} from 'nuxt-property-decorator'
 
@@ -36,12 +24,6 @@ type NodeInfo = any;
 export default class Explorer extends Vue {
 
   @Prop({type: Object, required: true}) node!: TreeNode;
-
-  @InjectReactive() project?: ProjectContainer|null;
-
-  @InjectReactive() cursor?: ProjectContainer|null;
-
-
 
   get hasFolderParent(): boolean {
     return Boolean(this.info.parentFolder);

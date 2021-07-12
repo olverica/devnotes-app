@@ -6,11 +6,6 @@
       {{ title }}
     </h2>
 
-    <viewer-navigation-node
-      v-for='node in nodes'
-      :key="node.id"
-      :node="node"/> 
-
     <slot/>
   </div>
 </template>
@@ -18,15 +13,12 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-import TreeNode from '~/services/notefs/nodes/node'
 import {Component, Prop} from 'nuxt-property-decorator'
  
 
 @Component
 export default class Section extends Vue {
   
-  @Prop({type: Array}) nodes!: TreeNode[];
-
   @Prop({type: String}) title!: string;
 
 

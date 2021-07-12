@@ -1,7 +1,8 @@
 import RootNode, {RootChild} from '~/services/notefs/nodes/root'
 import {ValidatedRoot} from '~/services/project/validators/root'
-import ParentConvertor from '~/services/project/convertors/bases/parent'
 import FolderConvertor from '~/services/project/convertors/folder'
+import ParentConvertor from '~/services/project/convertors/bases/parent'
+import TrashConvertor from '~/services/project/convertors/trash-bin'
 import NoteConvertor from '~/services/project/convertors/note'
 
 
@@ -9,7 +10,8 @@ export default class RootConvertor extends ParentConvertor<ValidatedRoot, RootNo
 
     protected childConvertors = {
         note: new NoteConvertor(),
-        folder: new FolderConvertor()
+        folder: new FolderConvertor(),
+        trashBin: new TrashConvertor() 
     }
     
     

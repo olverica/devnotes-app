@@ -5,7 +5,8 @@
       :class="{'navigation__item--opened': !!!shrinked}"
       :type="type"
       :name="name"
-      @click.native="toggle"/>
+      @click.native="toggle">
+    </explorer-navigation-title>
 
     <transition-shrink 
       class="navigation__folder_inner"
@@ -41,11 +42,11 @@ export default class Group extends Vue {
   @Prop({type: Array, default: () => []}) 
   private nodes!: TreeNode;
 
-  private shrinked = true;
+  private shrinked: boolean = true;
 
 
   toggle() {
-    this.shrinked = !!!this.shrinked
+    this.shrinked = !!!this.shrinked;
   }
 }
 </script>

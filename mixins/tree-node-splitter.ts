@@ -1,5 +1,5 @@
 import { Vue, Component} from 'vue-property-decorator'
-import TreeNode from '~/services/notefs/nodes/node'
+import TreeNode from '~/services/notefs/node'
 
 @Component
 export default class TreeNodeSplitter extends Vue {

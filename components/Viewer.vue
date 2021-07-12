@@ -1,62 +1,63 @@
 <template>
   <client-only>
-    <viewer-layout-folder
-      v-if="folderSelected"
-      :node="selected"/>
+    <div class="viewer">
+      <component 
+        :is="header"
+        :node="selected"/>
 
-    <viewer-layout-root
-      v-else-if="rootSelected"
-      :node="selected"/>
-
-    <viewer-layout-note
-      v-else-if="noteSelected"
-      :node="selected"/>
+      <componet 
+        :is="scene"
+        :node="selected"/>
+    </div>
   </client-only>
 </template>
 
 <script lang="ts">
-import Vue from 'vue' 
-import RootNode from '~/services/notefs/nodes/root'
-import NoteNode from '~/services/notefs/nodes/note'
-import TreeCursor from '~/services/cursor'
-import FolderNode from '~/services/notefs/nodes/folder'
-import ProjectContainer from '~/services/notefs/project'
 import {Component, InjectReactive} from 'nuxt-property-decorator'
-  
+import {isFolder, isRoot, isNote} from '~/services/notefs/guards'
+import FolderScene from '~/components/viewer/navigation/scenes/Folder.vue'
+import TreeCursor from '~/services/cursor'
+import NoteScene from '~/components/viewer/navigation/scenes/Note.vue'
+import RootScene from '~/components/viewer/navigation/scenes/Root.vue'
+import Controlls from '~/components/viewer/Header.vue'
+import Vue from 'vue' 
+
+
 @Component
 export default class Viewer extends Vue {
 
-  @InjectReactive() project?: ProjectContainer|null;
- 
   @InjectReactive() cursor!: TreeCursor;
 
-
-  get loaded(): boolean {
-    return this.projectLoaded && this.cursorLoaded
+  
+  get header() {
+    return Controlls;
   }
 
-  get projectLoaded() {
-    return Boolean(this.project);
+  get scene() {
+    if (this.isFolder)
+      return FolderScene;
+    
+    if (this.isNote)
+      return NoteScene;
+
+    if (this.isRoot)
+      return RootScene;
   }
 
-  get cursorLoaded() {
-    return Boolean(this.cursor)
+  get isFolder()  {
+    return isFolder(this.selected);
+  }
+
+  get isRoot()  {
+    return isRoot(this.selected);
+  }
+
+  get isNote()  {
+    return isNote(this.selected);
   }
 
   get selected() {
     return this.cursor.selected();
-  }
-
-  get folderSelected(): boolean {
-    return this.loaded && this.selected instanceof FolderNode;  
-  }
-
-  get rootSelected(): boolean {
-    return this.loaded && this.selected instanceof RootNode;  
-  }
-
-  get noteSelected(): boolean {
-    return this.loaded && this.selected instanceof NoteNode;  
   }
 }
 </script>

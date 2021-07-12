@@ -7,7 +7,7 @@
       <explorer 
         :project="project"/>
 
-     <!--  <viewer 
+      <viewer 
         :project="project"/> -->
 
     </main>
@@ -38,7 +38,7 @@ export default class IndexPage extends Vue {
   }
 
 
-  beforeMount() {
+  created() {
     this.cursor = this.creteCursor();
     this.project = this.createProject();
 
@@ -78,17 +78,6 @@ export default class IndexPage extends Vue {
     return {
       id: 'project',
       name: 'project',
-      trash: {
-        id: 'trash',
-        type: 'trash-bin',
-        children: [{
-            id: 'garbage',
-            type: 'garbage',
-            deletedAt: 'asd',
-            node: {id: 'note 10', type: 'note', name: 'some'}
-          }
-        ]
-      },  
 
       root: {
         id: 'root', type: 'root', name: 'some',
@@ -108,7 +97,17 @@ export default class IndexPage extends Vue {
           },
           {id: 'folder 1', type: 'folder', name: 'some', permission: 'private', children: []},
           {id: 'folder 2', type: 'folder', name: 'some', permission: 'public', children: []},
-          {id: 'note 3', type: 'note', name: 'some'}
+          {id: 'note 3', type: 'note', name: 'some'},
+
+          {
+            id: 'trash', type: 'trashBin',
+            children: [{
+              id: 'garbage',
+              type: 'garbage',
+              deletedAt: 'asd',
+              node: {id: 'note 10', type: 'note', name: 'some'}
+            }]
+          },  
         ]
       }
     }

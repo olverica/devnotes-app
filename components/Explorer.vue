@@ -14,8 +14,9 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-import Project from '~/services/notefs/nodes/project'
+import Project from '~/models/project'
 import {Component, Prop} from 'nuxt-property-decorator'
+  
   
 @Component
 export default class Explorer extends Vue {

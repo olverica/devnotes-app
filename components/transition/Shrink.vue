@@ -2,7 +2,9 @@
   <div 
     ref="wrapper"
     class="shrinkable_wrapper"
-    :style="{height: parsedHeight}">
+    :style="{
+      'height': parsedHeight,
+      'transition-duration': parsedDuration}">
 
     <div 
       ref="inner"
@@ -16,78 +18,82 @@
 
 <script lang="ts">
 import Vue from 'vue' 
-import {Component, PropSync, Watch, Ref} from 'nuxt-property-decorator'
-
+import {Component, PropSync, Prop, Watch, Ref} from 'nuxt-property-decorator'
 
 @Component
-export default class Shrink extends Vue {
-
-  private height: number = -1;
-  
-  private toggling: boolean = false;
+export default class Shrinkable extends Vue {
   
   @Ref() inner !: HTMLElement;
 
-  @Ref() wrapper !: HTMLElement;
+  @Prop({type: Number, default: 400})
+  private duration!: number;
 
-  @PropSync('shrinked', {type: Boolean }) synckedShrinked!: boolean;
+  @PropSync('shrinked', {type: Boolean}) 
+  private synckedShrinked!: boolean;
+
+  private height: number = -1;
+
+  private timeout: NodeJS.Timeout|null = null;
+
+
+  get parsedHeight(): string {
+    return this.height === -1 ? 'auto': this.height + 'px';
+  }
+
+  get parsedDuration(): string {
+    return  this.duration + 'ms';
+  }
+
+  get slotShown(): boolean {
+    return !!!this.synckedShrinked;
+  }
 
 
   @Watch('synckedShrinked') 
   onShrinkedChange(shrinked: boolean) {
     this.toggle(shrinked);
   }
-  
-  get parsedHeight(): string {
-    return this.height === -1 ? 'auto': this.height + 'px';
-  }
-
-  get slotShown(): boolean {
-    return this.toggling || !!!this.synckedShrinked;
-  }
 
   mounted() {
     if (this.synckedShrinked)
-      this.close();
+      this.hideContent();
   }
 
-  async toggle(shrinked: boolean) {
+  toggle(shrinked: boolean) {
+    if (this.timeout)
+      clearTimeout(this.timeout);
+
     if (shrinked) 
-      await this.close();
+      this.close();
     else 
-      await this.open();
+      this.open();
   }
 
-  async open() {
-    await this.wrappContent();
-    await this.waitForTransition();
-
-    this.setAutoHeight();
+  open() {
+    this.wrappContent();
+    this.setTimeout(this.setAutoHeight, this.duration);
   }
 
-  async close() {
-    await this.wrappContent();
-    this.height = 0;
+  close() {
+    this.wrappContent()
+    this.setTimeout(this.hideContent, 50);
   }
 
-  async waitForTransition(): Promise<void> {
-    let callback = (resolve: () => void) =>
-      this.appendEvent(resolve);
+  setTimeout(callback: () => void, duration: number) {
+    let wrapped = () => {
+      this.timeout = null;
+      callback();
+    };
 
-    return new Promise<void>(callback);
+    this.timeout = setTimeout(wrapped, duration);
   }
 
-  async wrappContent() {
+  wrappContent() {
     this.height = this.getContentHeight();
-    await this.$nextTick();
   }
 
-  appendEvent(callback: () => unknown, timeout= 500) {
-    this.wrapper.addEventListener('transitionend', callback, {
-      once: true
-    })
-
-    setTimeout(callback, timeout);
+  hideContent() {
+    this.height = 0;
   }
 
   setAutoHeight() {
@@ -104,6 +110,6 @@ export default class Shrink extends Vue {
 
 .shrinkable_wrapper
   overflow: hidden
-  transition: height .4s
+  transition-property: height
 
 </style>

@@ -12,14 +12,17 @@
     v-else-if="isFolder()"
     :node="node"/>
 
+  <explorer-navigation-nodes-trash
+    v-else-if="isTrashBin()"
+    :node="node"/>
+
 </template>
 
 <script lang="ts">
 import Vue from 'vue' 
 import TreeNode from '~/services/notefs/node' 
 import {Component, Prop} from 'nuxt-property-decorator'
-import {isNote, isFolder, isTag} from '~/services/notefs/guards'
-  
+import {isNote, isFolder, isTag, isTrashBin} from '~/services/notefs/guards'
 
 @Component
 export default class Node extends Vue {
@@ -28,12 +31,16 @@ export default class Node extends Vue {
   private  node!: TreeNode;
 
 
-  isNote(): boolean {
-    return isNote(this.node);
+  isTrashBin(): boolean {
+    return isTrashBin(this.node);
   }
 
   isFolder(): boolean {
     return isFolder(this.node);
+  }
+
+  isNote(): boolean {
+    return isNote(this.node);
   }
 
   isTag(): boolean {

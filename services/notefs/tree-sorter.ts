@@ -1,5 +1,4 @@
 import {isTrashBin, isFolder, isNote} from '~/services/notefs/guards'
-import {Vue, Component} from 'vue-property-decorator'
 import TreeNode from '~/services/notefs/node'
 
 
@@ -8,19 +7,21 @@ interface PriorityGuard {
 }
 
 
-@Component
-export default class TreeNodeSorter extends Vue {
+export default class TreeSorter {
   
     protected priorities: PriorityGuard[] = [
-        isNote, isFolder, isTrashBin
+        isFolder, isNote, isTrashBin, 
     ];
 
 
-    sort(nodes: TreeNode[]): TreeNode[] {
-        let copy = 
-            [...nodes];
+    constructor(priorities?: PriorityGuard[]) {
+        if (priorities)
+            this.priorities = priorities
+    }
 
-        copy.sort(this.compare)
+    sort(nodes: TreeNode[]): TreeNode[] {
+        let copy = [...nodes];
+        copy.sort(this.compare.bind(this));
 
         return copy;
     }
@@ -37,7 +38,7 @@ export default class TreeNodeSorter extends Vue {
         
         for (let guard of this.priorities) {
             if (guard(node))
-            return priority;
+                return priority;
 
             priority++;
         }

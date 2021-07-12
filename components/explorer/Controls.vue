@@ -24,4 +24,4 @@
       <i class="explorer__control_icon">close_all</i>
     </button>
   </div>
-</template>
+</template> 

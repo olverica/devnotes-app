@@ -9,7 +9,7 @@ export type ValidatedTrashChild = ValidatedGarbage;
 
 export interface ValidatedTrash {
     id: Key;
-    type: 'trash-bin',
+    type: 'trashBin',
     children: ValidatedTrashChild[]
 }
 
@@ -22,6 +22,6 @@ export default class TrashValidator extends ParentValidator<ValidatedTrash> {
 
     protected rules = {
         id: isKey,
-        type: equalsTo('trash-bin'),
+        type: equalsTo('trashBin'),
     }
 }
