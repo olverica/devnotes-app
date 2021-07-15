@@ -1,0 +1,105 @@
+.modal
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  background: transparentize(#000, .4)
+  backdrop-filter: blur(20px) saturate(200%)
+  // flex
+  display: flex
+  align-items: center
+  justify-content: center
+  // 
+  .switch
+    width: 100%
+
+.modal__body
+  width: 600px
+  padding: 30px
+  background: $ui-dark
+  border-radius: $radius-large
+  // flex
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+
+.modal__header
+  // flex
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 20px
+  
+
+.modal__title
+  color: $text-white
+  font-size: $heading-small
+  font-weight: $weight-regular
+  // flex
+  display: flex
+  align-items: center
+  gap: 8px
+
+
+.modal__close
+  @include ol-icons
+  color: $text-gray
+  font-size: $text-large
+  height: max-content
+
+  
+.modal__confirm
+  width: 100%
+  height: 40px
+  background: $ui-white
+  border-radius: $radius-small
+  font-size: $text-huge
+  color: $ui-black
+  // flex
+  display: flex
+  align-items: center
+  justify-content: center
+
+
+.modal__content
+  // flex
+  display: flex
+  flex-direction: column
+  gap: 15px
+
+.modal__field
+  // flex
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+
+.modal__label
+  font-size: $text-huge
+  color: $text-lightgray
+
+
+.modal__input
+  width: 100%
+  height: 40px
+  padding: 0 20px
+  background: $ui-darkgray
+  border-radius: $radius-small
+  // text
+  color: $text-lightgray
+  // transition
+  transition: background .2s
+  // placeholder
+  &::placeholder
+    color: $text-darkgray
+  // focus state
+  &:focus
+    background: $ui-gray
+
+
+
+@import create/create
+@import profile/profile
+@import gallery/gallery
