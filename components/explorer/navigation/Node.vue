@@ -1,5 +1,4 @@
 <template>
-
   <explorer-navigation-nodes-note
     v-if="isNote()"
     :node="node"/>
@@ -15,7 +14,6 @@
   <explorer-navigation-nodes-trash
     v-else-if="isTrashBin()"
     :node="node"/>
-
 </template>
 
 <script lang="ts">
@@ -23,6 +21,7 @@ import Vue from 'vue'
 import TreeNode from '~/services/notefs/node' 
 import {Component, Prop} from 'nuxt-property-decorator'
 import {isNote, isFolder, isTag, isTrashBin} from '~/services/notefs/guards'
+
 
 @Component
 export default class Node extends Vue {

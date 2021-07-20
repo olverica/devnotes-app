@@ -1,17 +1,11 @@
 <template>
   <div class="root">
-
     <navbar/>
-
+    
     <main class="project">
-      <explorer 
-        :project="project"/>
-
-      <viewer 
-        :project="project"/> -->
-
+      <explorer :project="project"/>
+      <viewer :project="project"/>
     </main>
-
   </div>
 </template>
 
@@ -21,8 +15,9 @@ import Vue from 'vue'
 import {ref} from '@nuxtjs/composition-api'
 import Cursor from '~/services/cursor'
 import Project from '~/models/project'
-import {Component, ProvideReactive} from 'nuxt-property-decorator'
 import ProjectParser from '~/services/project/parser'
+import {Component, ProvideReactive} from 'nuxt-property-decorator'
+
 
 @Component
 export default class IndexPage extends Vue {

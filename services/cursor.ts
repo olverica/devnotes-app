@@ -1,24 +1,24 @@
 
 export default class Cursor<T = unknown> {
     
-    private history: T[] = [];
+    private _history: T[] = [];
 
     
-    public path() {
-        return this.history;
+    public history() {
+        return this._history;
     }
 
     public select(model: T) {
-        this.history.push(model);
+        this._history.push(model);
     }
 
     public goBack() {
-        this.history.pop()
+        this._history.pop()
     }
 
     public selected() {
-        let lastIndex = this.history.length - 1,
-            lastModel = this.history[lastIndex];
+        let lastIndex = this._history.length - 1,
+            lastModel = this._history[lastIndex];
             
         return lastModel;
     }

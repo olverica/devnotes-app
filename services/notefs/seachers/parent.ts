@@ -2,11 +2,11 @@ import TreeNode, {ParentNode, ProxyNode, NodeVisitor} from '~/services/notefs/no
 import {Key} from '~/services/model'
 
 
-export class ParentSeacher implements NodeVisitor {
+export default class ParentSeacher implements NodeVisitor {
 
     private searchingId: Key;
 
-    private foundedNode: TreeNode|null;
+    private foundedNode: ParentNode|null;
 
     private previousParent: ParentNode|null;
 
