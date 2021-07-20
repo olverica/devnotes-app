@@ -1,0 +1,32 @@
+.message__attachment
+  width: 100px
+  height: 80px
+  border-radius: $radius-small
+  background-color: $ui-white
+  @include background-image
+  position: relative
+  overflow: hidden
+  // hover effect 
+  &::before
+    cursor: pointer
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: radial-gradient(circle, transparentize($ui-dark, .75) 0%, transparentize($ui-black, .5) 100%)
+    // flex
+    display: flex
+    align-items: center
+    justify-content: center
+    // icon
+    @include ol-icons
+    content: "search"
+    color: $text-white
+    // before animation
+    opacity: 0
+    transition: opacity .2s, font-size .2s
+  // after animation
+  &:hover::before
+    opacity: 1
+    font-size: $heading-medium

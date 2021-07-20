@@ -1,0 +1,23 @@
+.create
+  .switch__item::after
+    @include ol-icons
+    font-size: $text-large
+    transition: color .2s
+  // note
+  .switch__item--note::after
+    content: "note"
+  
+  .switch__item--note.switch__item--active::after
+    color: $elem-note
+  // folder
+  .switch__item--folder::after
+    content: "folder"
+
+  .switch__item--folder.switch__item--active::after
+    color: $elem-folder
+  // tag
+  .switch__item--tag::after
+    content: "tag"
+
+  .switch__item--tag.switch__item--active::after
+    color: $brand-violet

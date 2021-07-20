@@ -1,0 +1,42 @@
+.gallery__controls 
+  display: flex
+  justify-content: space-between  
+  gap: 20px
+
+
+.gallery__statuses
+  .status
+    background: $ui-darkgray
+    color: $text-darkgray    
+
+
+.gallery__statuses,
+.gallery__buttons
+  display: flex
+  gap: 10px
+
+
+.gallery__button
+  height: 30px
+  padding: 0 20px
+  background: $ui-darkgray
+  border-radius: $radius-small
+  // text
+  font-size: $text-medium
+  color: $text-darkgray
+  // flex
+  display: flex
+  align-items: center
+  gap: 6px
+  // icon
+  &::after
+    @include ol-icons
+    font-size: inherit
+  // change icon
+  &--change::after
+    content: "change"
+    color: $ui-yellow
+    // delete icon
+  &--delete::after
+    content: "trash"
+    color: $ui-red

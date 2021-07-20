@@ -1,0 +1,53 @@
+.gallery__selected
+  width: 100%
+  padding-bottom: 56.25%
+  background: $ui-gray
+  border-radius: $radius-medium
+  border-bottom-left-radius: $radius-small
+  border-bottom-right-radius: $radius-small
+  position: relative
+  
+  
+.gallery__toolbar
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  padding: 10px
+  // flex 
+  display: flex
+  justify-content: space-between
+
+
+.gallery__zoom,
+.gallery__close
+  height: 30px
+  padding: 0 10px
+  background: $ui-darkgray
+  border-radius: $radius-small
+  // icon
+  color: $text-darkgray
+  font-size: $text-medium
+  @include ol-icons
+  // flex
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+
+.gallery__close
+  width: 30px
+  padding: 0
+
+
+.gallery__zoom_separator
+  width: 2px
+  height: $text-large
+  background: $ui-gray
+
+
+.gallery__zoom_button
+  color: inherit
+  font-size: inherit
+  line-height: inherit
+

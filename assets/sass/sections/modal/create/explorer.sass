@@ -1,0 +1,57 @@
+.create__explorer
+  // grid
+  display: grid
+  grid-auto-rows: max-content
+  grid-template-columns: repeat(2, 1fr)
+  grid-gap: 10px
+
+// explorer item
+
+.create__explorer_item
+  @extend .create__path_item
+  opacity: .6
+  height: 40px
+  padding: 0 20px
+  background: $ui-darkgray
+  border-radius: $radius-small
+  overflow: hidden
+  cursor: pointer
+  // grid
+  display: grid
+  grid-template-columns: max-content 1fr max-content
+  // transition
+  transition: opacity .2s
+  // text
+  span
+    @include text-overflow
+  // active icon
+  &::after
+    @include ol-icons
+    content: "check"
+    color: inherit
+    font-size: 0
+    opacity: 0
+    transition: font-size .2s, opacity .2s
+
+// explorer item states
+
+.create__explorer_item:hover
+  opacity: .8
+
+.create__explorer_item--active
+  opacity: 1 !important
+  // icon
+  &::after
+    opacity: 1
+    font-size: $text-medium
+
+
+// explorer item types 
+
+.create__explorer_item--folder::before
+  content: "folder"
+  color: $elem-folder
+
+.create__explorer_item--tag::before
+  content: "tag"
+  color: inherit

@@ -1,0 +1,55 @@
+.create__path
+  width: 100%
+  height: 40px
+  padding: 0 20px
+  background: $ui-darkgray
+  border-radius: $radius-small
+  // flex
+  display: flex
+  align-items: center
+  gap: 10px
+
+
+.create__path_separator
+  color: $text-darkgray
+  font-size: $text-huge
+  font-weight: $weight-semibold
+
+
+.create__path_item
+  font-size: $text-huge
+  color: $text-lightgray
+  // flex
+  display: flex
+  align-items: center
+  gap: 8px
+  // icon
+  &::before
+    @include ol-icons
+    font-size: $heading-small
+
+
+.create__path_item--root::before
+  content: "root"
+  color: $elem-folder
+
+
+.create__path_item--root::before
+  content: "root"
+  color: $elem-folder
+
+
+.create__path_item--folder::before
+  content: "folder"
+  color: $elem-folder
+
+
+.create__path_item--tag
+  height: 30px
+  padding: 0 15px
+  background: $ui-gray
+  border-radius: $radius-tiny
+  // 
+  &::before
+    content: "tag"
+    color: inherit
