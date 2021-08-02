@@ -1,0 +1,27 @@
+.alert__title
+  color: $text-white
+  font-size: $text-huge
+  font-weight: $weight-semibold
+  // subgrid
+  align-self: end
+
+
+.alert__text
+  color: $ui-whitesmoke
+  font-weight: $text-large
+  @include text-overflow
+
+
+.alert__button
+  height: 40px
+  width: max-content
+  padding: 0 20px
+  background: $ui-white
+  border-radius: $radius-small
+  // subgrid
+  grid-row: 1/3
+  grid-column: 2/3
+  // flex
+  display: flex
+  align-items: center
+  justify-content: center  
